@@ -1,0 +1,620 @@
+Hi Uday, How are you?
+Got 4 arguments.
+Available memory: 0x150bc -> 0x1000000.
+Argument count is 4.
+Argument 0 is -D.
+Argument 1 is t.
+Argument 2 is -u.
+Argument 3 is userprog1.dlx.obj.
+Process id: 31	Page text/data address: 0x16000		Physical page number allocated: 0->0
+Process id: 31	Page text/data address: 0x16004		Physical page number allocated: 0->1
+Process id: 31	Page text/data address: 0x16008		Physical page number allocated: 0->2
+Process id: 31	Page user stack address: 0x1e0fc	Physical page number allocated: 31->63
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 0	L2 page: 0	returning: 0x16000
+L1 page: 31	L2 page: 63	returning: 0x1e0fc
+L1 page: 31	L2 page: 63	returning: 0x1e0fc
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24000		Physical page number allocated: 2->0
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24008		Physical page number allocated: 2->1
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24010		Physical page number allocated: 2->2
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24018		Physical page number allocated: 2->3
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24020		Physical page number allocated: 2->4
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24028		Physical page number allocated: 2->5
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24030		Physical page number allocated: 2->6
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24038		Physical page number allocated: 2->7
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24040		Physical page number allocated: 2->8
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24048		Physical page number allocated: 2->9
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24050		Physical page number allocated: 2->10
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24058		Physical page number allocated: 2->11
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24060		Physical page number allocated: 2->12
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24068		Physical page number allocated: 2->13
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24070		Physical page number allocated: 2->14
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24078		Physical page number allocated: 2->15
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24080		Physical page number allocated: 2->16
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24088		Physical page number allocated: 2->17
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24090		Physical page number allocated: 2->18
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24098		Physical page number allocated: 2->19
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240a0		Physical page number allocated: 2->20
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240a8		Physical page number allocated: 2->21
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240b0		Physical page number allocated: 2->22
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240b8		Physical page number allocated: 2->23
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240c0		Physical page number allocated: 2->24
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240c8		Physical page number allocated: 2->25
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240d0		Physical page number allocated: 2->26
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240d8		Physical page number allocated: 2->27
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240e0		Physical page number allocated: 2->28
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240e8		Physical page number allocated: 2->29
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240f0		Physical page number allocated: 2->30
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x240f8		Physical page number allocated: 2->31
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24100		Physical page number allocated: 2->32
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24108		Physical page number allocated: 2->33
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24110		Physical page number allocated: 2->34
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24118		Physical page number allocated: 2->35
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24120		Physical page number allocated: 2->36
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24128		Physical page number allocated: 2->37
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24130		Physical page number allocated: 2->38
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24138		Physical page number allocated: 2->39
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24140		Physical page number allocated: 2->40
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24148		Physical page number allocated: 2->41
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24150		Physical page number allocated: 2->42
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24158		Physical page number allocated: 2->43
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24160		Physical page number allocated: 2->44
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24168		Physical page number allocated: 2->45
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24170		Physical page number allocated: 2->46
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24178		Physical page number allocated: 2->47
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24180		Physical page number allocated: 2->48
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24188		Physical page number allocated: 2->49
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24190		Physical page number allocated: 2->50
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x24198		Physical page number allocated: 2->51
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241a0		Physical page number allocated: 2->52
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241a8		Physical page number allocated: 2->53
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241b0		Physical page number allocated: 2->54
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241b8		Physical page number allocated: 2->55
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241c0		Physical page number allocated: 2->56
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241c8		Physical page number allocated: 2->57
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241d0		Physical page number allocated: 2->58
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241d8		Physical page number allocated: 2->59
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241e0		Physical page number allocated: 2->60
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241e8		Physical page number allocated: 2->61
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241f0		Physical page number allocated: 2->62
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x241f8		Physical page number allocated: 2->63
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124000		Physical page number allocated: 3->0
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124008		Physical page number allocated: 3->1
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124010		Physical page number allocated: 3->2
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124018		Physical page number allocated: 3->3
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124020		Physical page number allocated: 3->4
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124028		Physical page number allocated: 3->5
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124030		Physical page number allocated: 3->6
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124038		Physical page number allocated: 3->7
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124040		Physical page number allocated: 3->8
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124048		Physical page number allocated: 3->9
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124050		Physical page number allocated: 3->10
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124058		Physical page number allocated: 3->11
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124060		Physical page number allocated: 3->12
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124068		Physical page number allocated: 3->13
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124070		Physical page number allocated: 3->14
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124078		Physical page number allocated: 3->15
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124080		Physical page number allocated: 3->16
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124088		Physical page number allocated: 3->17
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124090		Physical page number allocated: 3->18
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124098		Physical page number allocated: 3->19
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240a0		Physical page number allocated: 3->20
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240a8		Physical page number allocated: 3->21
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240b0		Physical page number allocated: 3->22
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240b8		Physical page number allocated: 3->23
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240c0		Physical page number allocated: 3->24
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240c8		Physical page number allocated: 3->25
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240d0		Physical page number allocated: 3->26
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240d8		Physical page number allocated: 3->27
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240e0		Physical page number allocated: 3->28
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240e8		Physical page number allocated: 3->29
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240f0		Physical page number allocated: 3->30
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1240f8		Physical page number allocated: 3->31
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124100		Physical page number allocated: 3->32
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124108		Physical page number allocated: 3->33
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124110		Physical page number allocated: 3->34
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124118		Physical page number allocated: 3->35
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124120		Physical page number allocated: 3->36
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124128		Physical page number allocated: 3->37
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124130		Physical page number allocated: 3->38
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124138		Physical page number allocated: 3->39
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124140		Physical page number allocated: 3->40
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124148		Physical page number allocated: 3->41
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124150		Physical page number allocated: 3->42
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124158		Physical page number allocated: 3->43
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124160		Physical page number allocated: 3->44
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124168		Physical page number allocated: 3->45
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124170		Physical page number allocated: 3->46
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124178		Physical page number allocated: 3->47
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124180		Physical page number allocated: 3->48
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124188		Physical page number allocated: 3->49
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124190		Physical page number allocated: 3->50
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x102c isr=0x100 args=0x00fffbec.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x124198		Physical page number allocated: 3->51
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1241a0		Physical page number allocated: 3->52
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1241a8		Physical page number allocated: 3->53
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1241b0		Physical page number allocated: 3->54
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1241b8		Physical page number allocated: 3->55
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1241c0		Physical page number allocated: 3->56
+About to return from dointerrupt.
+Interrupt cause=0x20 iar=0x102c isr=0x100 args=0x00fffbec.
+Process id: 31	Page fault address: 0x1241c8		Physical page number allocated: 3->57
+About to return from dointerrupt.
+Interrupt cause=0x8000201 iar=0x10e4 isr=0x100 args=0x00fffbe4.
+Got a printf trap!
+L1 page: 31	L2 page: 63	returning: 0x1e0fc
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+L1 page: 0	L2 page: 1	returning: 0x16004
+In Userprog1, Sum : 213
+About to return from dointerrupt.
+Interrupt cause=0x40 iar=0x10e4 isr=0x100 args=0x00fffbe4.
+Got a timer interrupt!
+About to return from dointerrupt.
+Interrupt cause=0x8000300 iar=0x1b28 isr=0x100 args=0x00fffbec.
+Got an exit trap!
+Got an exit trap!
+Process id: 31	Virtual page base address: 0x16000	Freeing physical page number: 0->0
+Process id: 31	Virtual page base address: 0x16004	Freeing physical page number: 0->1
+Process id: 31	Virtual page base address: 0x16008	Freeing physical page number: 0->2
+Process id: 31	Virtual page base address: 0x24000	Freeing physical page number: 2->0
+Process id: 31	Virtual page base address: 0x24004	Freeing physical page number: 2->1
+Process id: 31	Virtual page base address: 0x24008	Freeing physical page number: 2->2
+Process id: 31	Virtual page base address: 0x2400c	Freeing physical page number: 2->3
+Process id: 31	Virtual page base address: 0x24010	Freeing physical page number: 2->4
+Process id: 31	Virtual page base address: 0x24014	Freeing physical page number: 2->5
+Process id: 31	Virtual page base address: 0x24018	Freeing physical page number: 2->6
+Process id: 31	Virtual page base address: 0x2401c	Freeing physical page number: 2->7
+Process id: 31	Virtual page base address: 0x24020	Freeing physical page number: 2->8
+Process id: 31	Virtual page base address: 0x24024	Freeing physical page number: 2->9
+Process id: 31	Virtual page base address: 0x24028	Freeing physical page number: 2->10
+Process id: 31	Virtual page base address: 0x2402c	Freeing physical page number: 2->11
+Process id: 31	Virtual page base address: 0x24030	Freeing physical page number: 2->12
+Process id: 31	Virtual page base address: 0x24034	Freeing physical page number: 2->13
+Process id: 31	Virtual page base address: 0x24038	Freeing physical page number: 2->14
+Process id: 31	Virtual page base address: 0x2403c	Freeing physical page number: 2->15
+Process id: 31	Virtual page base address: 0x24040	Freeing physical page number: 2->16
+Process id: 31	Virtual page base address: 0x24044	Freeing physical page number: 2->17
+Process id: 31	Virtual page base address: 0x24048	Freeing physical page number: 2->18
+Process id: 31	Virtual page base address: 0x2404c	Freeing physical page number: 2->19
+Process id: 31	Virtual page base address: 0x24050	Freeing physical page number: 2->20
+Process id: 31	Virtual page base address: 0x24054	Freeing physical page number: 2->21
+Process id: 31	Virtual page base address: 0x24058	Freeing physical page number: 2->22
+Process id: 31	Virtual page base address: 0x2405c	Freeing physical page number: 2->23
+Process id: 31	Virtual page base address: 0x24060	Freeing physical page number: 2->24
+Process id: 31	Virtual page base address: 0x24064	Freeing physical page number: 2->25
+Process id: 31	Virtual page base address: 0x24068	Freeing physical page number: 2->26
+Process id: 31	Virtual page base address: 0x2406c	Freeing physical page number: 2->27
+Process id: 31	Virtual page base address: 0x24070	Freeing physical page number: 2->28
+Process id: 31	Virtual page base address: 0x24074	Freeing physical page number: 2->29
+Process id: 31	Virtual page base address: 0x24078	Freeing physical page number: 2->30
+Process id: 31	Virtual page base address: 0x2407c	Freeing physical page number: 2->31
+Process id: 31	Virtual page base address: 0x24080	Freeing physical page number: 2->32
+Process id: 31	Virtual page base address: 0x24084	Freeing physical page number: 2->33
+Process id: 31	Virtual page base address: 0x24088	Freeing physical page number: 2->34
+Process id: 31	Virtual page base address: 0x2408c	Freeing physical page number: 2->35
+Process id: 31	Virtual page base address: 0x24090	Freeing physical page number: 2->36
+Process id: 31	Virtual page base address: 0x24094	Freeing physical page number: 2->37
+Process id: 31	Virtual page base address: 0x24098	Freeing physical page number: 2->38
+Process id: 31	Virtual page base address: 0x2409c	Freeing physical page number: 2->39
+Process id: 31	Virtual page base address: 0x240a0	Freeing physical page number: 2->40
+Process id: 31	Virtual page base address: 0x240a4	Freeing physical page number: 2->41
+Process id: 31	Virtual page base address: 0x240a8	Freeing physical page number: 2->42
+Process id: 31	Virtual page base address: 0x240ac	Freeing physical page number: 2->43
+Process id: 31	Virtual page base address: 0x240b0	Freeing physical page number: 2->44
+Process id: 31	Virtual page base address: 0x240b4	Freeing physical page number: 2->45
+Process id: 31	Virtual page base address: 0x240b8	Freeing physical page number: 2->46
+Process id: 31	Virtual page base address: 0x240bc	Freeing physical page number: 2->47
+Process id: 31	Virtual page base address: 0x240c0	Freeing physical page number: 2->48
+Process id: 31	Virtual page base address: 0x240c4	Freeing physical page number: 2->49
+Process id: 31	Virtual page base address: 0x240c8	Freeing physical page number: 2->50
+Process id: 31	Virtual page base address: 0x240cc	Freeing physical page number: 2->51
+Process id: 31	Virtual page base address: 0x240d0	Freeing physical page number: 2->52
+Process id: 31	Virtual page base address: 0x240d4	Freeing physical page number: 2->53
+Process id: 31	Virtual page base address: 0x240d8	Freeing physical page number: 2->54
+Process id: 31	Virtual page base address: 0x240dc	Freeing physical page number: 2->55
+Process id: 31	Virtual page base address: 0x240e0	Freeing physical page number: 2->56
+Process id: 31	Virtual page base address: 0x240e4	Freeing physical page number: 2->57
+Process id: 31	Virtual page base address: 0x240e8	Freeing physical page number: 2->58
+Process id: 31	Virtual page base address: 0x240ec	Freeing physical page number: 2->59
+Process id: 31	Virtual page base address: 0x240f0	Freeing physical page number: 2->60
+Process id: 31	Virtual page base address: 0x240f4	Freeing physical page number: 2->61
+Process id: 31	Virtual page base address: 0x240f8	Freeing physical page number: 2->62
+Process id: 31	Virtual page base address: 0x240fc	Freeing physical page number: 2->63
+Process id: 31	Virtual page base address: 0x124000	Freeing physical page number: 3->0
+Process id: 31	Virtual page base address: 0x124004	Freeing physical page number: 3->1
+Process id: 31	Virtual page base address: 0x124008	Freeing physical page number: 3->2
+Process id: 31	Virtual page base address: 0x12400c	Freeing physical page number: 3->3
+Process id: 31	Virtual page base address: 0x124010	Freeing physical page number: 3->4
+Process id: 31	Virtual page base address: 0x124014	Freeing physical page number: 3->5
+Process id: 31	Virtual page base address: 0x124018	Freeing physical page number: 3->6
+Process id: 31	Virtual page base address: 0x12401c	Freeing physical page number: 3->7
+Process id: 31	Virtual page base address: 0x124020	Freeing physical page number: 3->8
+Process id: 31	Virtual page base address: 0x124024	Freeing physical page number: 3->9
+Process id: 31	Virtual page base address: 0x124028	Freeing physical page number: 3->10
+Process id: 31	Virtual page base address: 0x12402c	Freeing physical page number: 3->11
+Process id: 31	Virtual page base address: 0x124030	Freeing physical page number: 3->12
+Process id: 31	Virtual page base address: 0x124034	Freeing physical page number: 3->13
+Process id: 31	Virtual page base address: 0x124038	Freeing physical page number: 3->14
+Process id: 31	Virtual page base address: 0x12403c	Freeing physical page number: 3->15
+Process id: 31	Virtual page base address: 0x124040	Freeing physical page number: 3->16
+Process id: 31	Virtual page base address: 0x124044	Freeing physical page number: 3->17
+Process id: 31	Virtual page base address: 0x124048	Freeing physical page number: 3->18
+Process id: 31	Virtual page base address: 0x12404c	Freeing physical page number: 3->19
+Process id: 31	Virtual page base address: 0x124050	Freeing physical page number: 3->20
+Process id: 31	Virtual page base address: 0x124054	Freeing physical page number: 3->21
+Process id: 31	Virtual page base address: 0x124058	Freeing physical page number: 3->22
+Process id: 31	Virtual page base address: 0x12405c	Freeing physical page number: 3->23
+Process id: 31	Virtual page base address: 0x124060	Freeing physical page number: 3->24
+Process id: 31	Virtual page base address: 0x124064	Freeing physical page number: 3->25
+Process id: 31	Virtual page base address: 0x124068	Freeing physical page number: 3->26
+Process id: 31	Virtual page base address: 0x12406c	Freeing physical page number: 3->27
+Process id: 31	Virtual page base address: 0x124070	Freeing physical page number: 3->28
+Process id: 31	Virtual page base address: 0x124074	Freeing physical page number: 3->29
+Process id: 31	Virtual page base address: 0x124078	Freeing physical page number: 3->30
+Process id: 31	Virtual page base address: 0x12407c	Freeing physical page number: 3->31
+Process id: 31	Virtual page base address: 0x124080	Freeing physical page number: 3->32
+Process id: 31	Virtual page base address: 0x124084	Freeing physical page number: 3->33
+Process id: 31	Virtual page base address: 0x124088	Freeing physical page number: 3->34
+Process id: 31	Virtual page base address: 0x12408c	Freeing physical page number: 3->35
+Process id: 31	Virtual page base address: 0x124090	Freeing physical page number: 3->36
+Process id: 31	Virtual page base address: 0x124094	Freeing physical page number: 3->37
+Process id: 31	Virtual page base address: 0x124098	Freeing physical page number: 3->38
+Process id: 31	Virtual page base address: 0x12409c	Freeing physical page number: 3->39
+Process id: 31	Virtual page base address: 0x1240a0	Freeing physical page number: 3->40
+Process id: 31	Virtual page base address: 0x1240a4	Freeing physical page number: 3->41
+Process id: 31	Virtual page base address: 0x1240a8	Freeing physical page number: 3->42
+Process id: 31	Virtual page base address: 0x1240ac	Freeing physical page number: 3->43
+Process id: 31	Virtual page base address: 0x1240b0	Freeing physical page number: 3->44
+Process id: 31	Virtual page base address: 0x1240b4	Freeing physical page number: 3->45
+Process id: 31	Virtual page base address: 0x1240b8	Freeing physical page number: 3->46
+Process id: 31	Virtual page base address: 0x1240bc	Freeing physical page number: 3->47
+Process id: 31	Virtual page base address: 0x1240c0	Freeing physical page number: 3->48
+Process id: 31	Virtual page base address: 0x1240c4	Freeing physical page number: 3->49
+Process id: 31	Virtual page base address: 0x1240c8	Freeing physical page number: 3->50
+Process id: 31	Virtual page base address: 0x1240cc	Freeing physical page number: 3->51
+Process id: 31	Virtual page base address: 0x1240d0	Freeing physical page number: 3->52
+Process id: 31	Virtual page base address: 0x1240d4	Freeing physical page number: 3->53
+Process id: 31	Virtual page base address: 0x1240d8	Freeing physical page number: 3->54
+Process id: 31	Virtual page base address: 0x1240dc	Freeing physical page number: 3->55
+Process id: 31	Virtual page base address: 0x1240e0	Freeing physical page number: 3->56
+Process id: 31	Virtual page base address: 0x1240e4	Freeing physical page number: 3->57
+Process id: 31	Virtual page base address: 0x1e0fc	Freeing physical page number: 31->63
+No runnable processes - exiting!
+Exiting at program request.
+Instructions executed: 1456311
+Time simulated: 1.456 secs
+Real time elapsed: 0.056 secs
+Execution rate: 25.84M simulated instructions per real second.

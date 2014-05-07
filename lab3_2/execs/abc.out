@@ -1,0 +1,8 @@
+Hi Uday, How are you?
+Got 3 arguments.
+Available memory: 0x150dc -> 0x1000000.
+Argument count is 3.
+Argument 0 is -D.
+Argument 1 is t.
+Argument 2 is userprog1.dlx.obj.
+Got a control-C: exiting!

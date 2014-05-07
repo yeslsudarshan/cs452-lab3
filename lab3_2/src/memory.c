@@ -160,20 +160,31 @@ MemoryFreePage(uint32 page)
 //	tables.
 //
 //----------------------------------------------------------------------
+/*Sudarshan*/
 uint32
 MemoryTranslateUserToSystem (PCB *pcb, uint32 addr)
 {
 //-------------------------------------------
 // You need to change the code below 
 //-------------------------------------------
-
+    uint32 *l2_pagetable;
     int	page = addr / MEMORY_PAGE_SIZE;
+    int l2_page_num = page % L2_MAX_ENTRIES;
+    int l1_page_num = page / L2_MAX_ENTRIES;
     int offset = addr % MEMORY_PAGE_SIZE;
-    if (page > pcb->npages) {
+	
+   if((l1_page_num*l2_page_num) > ((L1_MAX_ENTRIES)*(L2_MAX_ENTRIES))) {
+      printf("Ran out of memory  L1 %d L2  %d ",l1_page_num,l2_page_num);
       return (0);
     }
-    return ((pcb->pagetable[page] & MEMORY_PTE_MASK) + offset);
+    l2_pagetable = (uint32 *)(pcb->pagetable[l1_page_num] & MEMORY_PTE_MASK);
+    l2_pagetable += l2_page_num;
+    /* Sudarshan*
+    printf("L1 page: %d\tL2 page: %d\treturning: %p\n", l1_page_num, l2_page_num, l2_pagetable);//*/
+
+    return ((*(l2_pagetable) & MEMORY_PTE_MASK)+ offset);
 }
+
 
 //----------------------------------------------------------------------
 //

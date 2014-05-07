@@ -1,0 +1,1670 @@
+ an 	os.dlx	12682
+ an OS - 	os.lst	13466
+.align	dlxos.s	/^.align 2$/
+.align	trap_random.s	/^.align 2$/
+.endproc	dlxos.s	/^.endproc _osinit$/
+.endproc	dlxos.s	/^.endproc _intrhandler$/
+.endproc	dlxos.s	/^.endproc _SetIntrs$/
+.endproc	dlxos.s	/^.endproc _CurrentIntrs$/
+.endproc	dlxos.s	/^.endproc _ProcessSleep$/
+.endproc	synch.working.s	/^.endproc _isspace$/
+.endproc	synch.working.s	/^.endproc _isxdigit$/
+.endproc	synch.working.s	/^.endproc _QueueLinkInit$/
+.endproc	synch.working.s	/^.endproc _QueueNext$/
+.endproc	synch.working.s	/^.endproc _QueuePrev$/
+.endproc	synch.working.s	/^.endproc _QueueFirst$/
+.endproc	synch.working.s	/^.endproc _QueueLast$/
+.endproc	synch.working.s	/^.endproc _QueueInsertAfter$/
+.endproc	synch.working.s	/^.endproc _QueueInsertFirst$/
+.endproc	synch.working.s	/^.endproc _QueueInsertLast$/
+.endproc	synch.working.s	/^.endproc _QueueRemove$/
+.endproc	synch.working.s	/^.endproc _QueueLength$/
+.endproc	synch.working.s	/^.endproc _QueueEmpty$/
+.endproc	synch.working.s	/^.endproc _SemInit$/
+.endproc	synch.working.s	/^.endproc _SemWait$/
+.endproc	synch.working.s	/^.endproc _SemSignal$/
+.endproc	synch.working.s	/^.endproc _LockInit$/
+.endproc	synch.working.s	/^.endproc _LockAcquire$/
+.endproc	synch.working.s	/^.endproc _LockRelease$/
+.endproc	synch.working.s	/^.endproc _CondInit$/
+.endproc	synch.working.s	/^.endproc _CondWait$/
+.endproc	synch.working.s	/^.endproc _CondSignal$/
+.endproc	synch.working.s	/^.endproc _CondBroadcast$/
+.endproc	trap_random.s	/^.endproc _random$/
+.endproc	trap_random.s	/^.endproc _srandom$/
+.endproc	usertraps.s	/^.endproc _Open$/
+.endproc	usertraps.s	/^.endproc _Close$/
+.endproc	usertraps.s	/^.endproc _Read$/
+.endproc	usertraps.s	/^.endproc _Write$/
+.endproc	usertraps.s	/^.endproc _Lseek$/
+.endproc	usertraps.s	/^.endproc _Putchar$/
+.endproc	usertraps.s	/^.endproc _Printf$/
+.endproc	usertraps.s	/^.endproc _getpid$/
+.endproc	usertraps.s	/^.endproc _process_create$/
+.endproc	usertraps.s	/^.endproc _sem_create$/
+.endproc	usertraps.s	/^.endproc _sem_wait$/
+.endproc	usertraps.s	/^.endproc _sem_signal$/
+.global	dlxos.s	/^.global _osinit$/
+.global	dlxos.s	/^.global _intrhandler$/
+.global	dlxos.s	/^.global _SetIntrs$/
+.global	dlxos.s	/^.global _CurrentIntrs$/
+.global	dlxos.s	/^.global _ProcessSleep$/
+.global	synch.working.s	/^.global _isspace$/
+.global	synch.working.s	/^.global _isxdigit$/
+.global	synch.working.s	/^.global _QueueLinkInit$/
+.global	synch.working.s	/^.global _QueueNext$/
+.global	synch.working.s	/^.global _QueuePrev$/
+.global	synch.working.s	/^.global _QueueFirst$/
+.global	synch.working.s	/^.global _QueueLast$/
+.global	synch.working.s	/^.global _QueueInsertAfter$/
+.global	synch.working.s	/^.global _QueueInsertFirst$/
+.global	synch.working.s	/^.global _QueueInsertLast$/
+.global	synch.working.s	/^.global _QueueRemove$/
+.global	synch.working.s	/^.global _QueueLength$/
+.global	synch.working.s	/^.global _QueueEmpty$/
+.global	synch.working.s	/^.global _SemInit$/
+.global	synch.working.s	/^.global _SemWait$/
+.global	synch.working.s	/^.global _SemSignal$/
+.global	synch.working.s	/^.global _LockInit$/
+.global	synch.working.s	/^.global _LockAcquire$/
+.global	synch.working.s	/^.global _LockRelease$/
+.global	synch.working.s	/^.global _CondInit$/
+.global	synch.working.s	/^.global _CondWait$/
+.global	synch.working.s	/^.global _CondSignal$/
+.global	synch.working.s	/^.global _CondBroadcast$/
+.global	trap_random.s	/^.global _random$/
+.global	trap_random.s	/^.global _srandom$/
+.global	usertraps.s	/^.global _Open$/
+.global	usertraps.s	/^.global _Close$/
+.global	usertraps.s	/^.global _Read$/
+.global	usertraps.s	/^.global _Write$/
+.global	usertraps.s	/^.global _Lseek$/
+.global	usertraps.s	/^.global _Putchar$/
+.global	usertraps.s	/^.global _Printf$/
+.global	usertraps.s	/^.global _getpid$/
+.global	usertraps.s	/^.global _process_create$/
+.global	usertraps.s	/^.global _sem_create$/
+.global	usertraps.s	/^.global _sem_wait$/
+.global	usertraps.s	/^.global _sem_signal$/
+.proc	dlxos.s	/^.proc _osinit$/
+.proc	dlxos.s	/^.proc _intrhandler$/
+.proc	dlxos.s	/^.proc _SetIntrs$/
+.proc	dlxos.s	/^.proc _CurrentIntrs$/
+.proc	dlxos.s	/^.proc _ProcessSleep$/
+.proc	synch.working.s	/^.proc _isspace$/
+.proc	synch.working.s	/^.proc _isxdigit$/
+.proc	synch.working.s	/^.proc _QueueLinkInit$/
+.proc	synch.working.s	/^.proc _QueueNext$/
+.proc	synch.working.s	/^.proc _QueuePrev$/
+.proc	synch.working.s	/^.proc _QueueFirst$/
+.proc	synch.working.s	/^.proc _QueueLast$/
+.proc	synch.working.s	/^.proc _QueueInsertAfter$/
+.proc	synch.working.s	/^.proc _QueueInsertFirst$/
+.proc	synch.working.s	/^.proc _QueueInsertLast$/
+.proc	synch.working.s	/^.proc _QueueRemove$/
+.proc	synch.working.s	/^.proc _QueueLength$/
+.proc	synch.working.s	/^.proc _QueueEmpty$/
+.proc	synch.working.s	/^.proc _SemInit$/
+.proc	synch.working.s	/^.proc _SemWait$/
+.proc	synch.working.s	/^.proc _SemSignal$/
+.proc	synch.working.s	/^.proc _LockInit$/
+.proc	synch.working.s	/^.proc _LockAcquire$/
+.proc	synch.working.s	/^.proc _LockRelease$/
+.proc	synch.working.s	/^.proc _CondInit$/
+.proc	synch.working.s	/^.proc _CondWait$/
+.proc	synch.working.s	/^.proc _CondSignal$/
+.proc	synch.working.s	/^.proc _CondBroadcast$/
+.proc	trap_random.s	/^.proc _random$/
+.proc	trap_random.s	/^.proc _srandom$/
+.proc	usertraps.s	/^.proc _Open$/
+.proc	usertraps.s	/^.proc _Close$/
+.proc	usertraps.s	/^.proc _Read$/
+.proc	usertraps.s	/^.proc _Write$/
+.proc	usertraps.s	/^.proc _Lseek$/
+.proc	usertraps.s	/^.proc _Putchar$/
+.proc	usertraps.s	/^.proc _Printf$/
+.proc	usertraps.s	/^.proc _getpid$/
+.proc	usertraps.s	/^.proc _process_create$/
+.proc	usertraps.s	/^.proc _sem_create$/
+.proc	usertraps.s	/^.proc _sem_wait$/
+.proc	usertraps.s	/^.proc _sem_signal$/
+/#copies	dlxos.ps	/^\/#copies 1 def$/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/.notdef	dlxos.ps	/^\/.notdef      	\/.notdef      	\/.notdef      	\/.not/
+/Adieresis	dlxos.ps	/^\/Adieresis    	\/Aring        	\/AE           	\/Cced/
+/Agrave	dlxos.ps	/^\/Agrave       	\/Aacute       	\/Acircumflex  	\/Atil/
+/BeginEPSF	dlxos.ps	/^\/BeginEPSF {$/
+/Box	dlxos.ps	/^\/Box {	% x y w h -> -			define box path$/
+/Courier	dlxos.ps	/^\/Courier \/F-gs-font MF$/
+/Courier-Bold	dlxos.ps	/^\/Courier-Bold \/HF-gs-font MF$/
+/D	dlxos.ps	/^\/D            	\/E            	\/F            	\/G   /
+/Egrave	dlxos.ps	/^\/Egrave       	\/Eacute       	\/Ecircumflex  	\/Edie/
+/EndEPSF	dlxos.ps	/^\/EndEPSF {$/
+/Eth	dlxos.ps	/^\/Eth          	\/Ntilde       	\/Ograve       	\/Oacu/
+/F-gs-font	dlxos.ps	/^\/F-gs-font 10 10 SF$/
+/H	dlxos.ps	/^\/H            	\/I            	\/J            	\/K   /
+/HF	dlxos.ps	/^\/HF \/HF-gs-font findfont [HFpt_w 0 0 HFpt_h 0 0] m/
+/HFpt_h	dlxos.ps	/^\/HFpt_h 10 def$/
+/HFpt_w	dlxos.ps	/^\/HFpt_w 10 def$/
+/Igrave	dlxos.ps	/^\/Igrave       	\/Iacute       	\/Icircumflex  	\/Idie/
+/L	dlxos.ps	/^\/L            	\/M            	\/N            	\/O   /
+/M	dlxos.ps	/^\/M {moveto} bind def$/
+/MF	dlxos.ps	/^\/MF {	% fontname newfontname -> -	make a new encod/
+/Ocircumflex	dlxos.ps	/^\/Ocircumflex  	\/Otilde       	\/Odieresis    	\/mult/
+/Oslash	dlxos.ps	/^\/Oslash       	\/Ugrave       	\/Uacute       	\/Ucir/
+/P	dlxos.ps	/^\/P            	\/Q            	\/R            	\/S   /
+/S	dlxos.ps	/^\/S {	% showpage protecting gstate$/
+/SF	dlxos.ps	/^\/SF { % fontname width height -> -	set a new font$/
+/SUF	dlxos.ps	/^\/SUF { % fontname width height -> -	set a new user/
+/T	dlxos.ps	/^\/T            	\/U            	\/V            	\/W   /
+/Udieresis	dlxos.ps	/^\/Udieresis    	\/Yacute       	\/Thorn        	\/germ/
+/X	dlxos.ps	/^\/X            	\/Y            	\/Z            	\/brac/
+/_R	dlxos.ps	/^\/_R {	% restore from saved state$/
+/_S	dlxos.ps	/^\/_S {	% save current state$/
+/acute	dlxos.ps	/^\/acute        	\/mu           	\/paragraph    	\/bull/
+/adieresis	dlxos.ps	/^\/adieresis    	\/aring        	\/ae           	\/cced/
+/agrave	dlxos.ps	/^\/agrave       	\/aacute       	\/acircumflex  	\/atil/
+/at	dlxos.ps	/^\/at           	\/A            	\/B            	\/C   /
+/backslash	dlxos.ps	/^\/backslash    	\/bracketright 	\/asciicircum  	\/unde/
+/bar	dlxos.ps	/^\/bar          	\/braceright   	\/tilde        	\/.not/
+/bgs	dlxos.ps	/^\/bgs {	% x y height blskip gray str -> -	show stri/
+/cedilla	dlxos.ps	/^\/cedilla      	\/onesuperior  	\/ordmasculine 	\/guil/
+/cols	dlxos.ps	/^\/cols 1 def$/
+/column_borders	dlxos.ps	/^\/column_borders {$/
+/column_lines	dlxos.ps	/^\/column_lines {$/
+/comma	dlxos.ps	/^\/comma        	\/hyphen       	\/period       	\/slas/
+/currency	dlxos.ps	/^\/currency     	\/yen          	\/brokenbar    	\/sect/
+/d	dlxos.ps	/^\/d            	\/e            	\/f            	\/g   /
+/d_footer_h	dlxos.ps	/^\/d_footer_h 0 def$/
+/d_footer_w	dlxos.ps	/^\/d_footer_w 564 def$/
+/d_footer_x	dlxos.ps	/^\/d_footer_x 0 def$/
+/d_footer_y	dlxos.ps	/^\/d_footer_y 0 def$/
+/d_header_h	dlxos.ps	/^\/d_header_h 15 def$/
+/d_header_w	dlxos.ps	/^\/d_header_w 564 def$/
+/d_header_x	dlxos.ps	/^\/d_header_x 0 def$/
+/d_header_y	dlxos.ps	/^\/d_header_y 729 def$/
+/d_output_h	dlxos.ps	/^\/d_output_h 729 def$/
+/d_output_w	dlxos.ps	/^\/d_output_w 564 def$/
+/d_page_h	dlxos.ps	/^\/d_page_h 744 def$/
+/d_page_w	dlxos.ps	/^\/d_page_w 564 def$/
+/degree	dlxos.ps	/^\/degree       	\/plusminus    	\/twosuperior  	\/thre/
+/dieresis	dlxos.ps	/^\/dieresis     	\/copyright    	\/ordfeminine  	\/guil/
+/do_header	dlxos.ps	/^\/do_header {	% print default simple header$/
+/dollar	dlxos.ps	/^\/dollar       	\/percent      	\/ampersand    	\/quot/
+/draw_underlay	dlxos.ps	/^\/draw_underlay {$/
+/egrave	dlxos.ps	/^\/egrave       	\/eacute       	\/ecircumflex  	\/edie/
+/eight	dlxos.ps	/^\/eight        	\/nine         	\/colon        	\/semi/
+/encoding_vector	dlxos.ps	/^\/encoding_vector [$/
+/eth	dlxos.ps	/^\/eth          	\/ntilde       	\/ograve       	\/oacu/
+/fdir	dlxos.ps	/^\/fdir () def$/
+/fdir	dlxos.ps	/^\/fdir () def$/
+/fdir	dlxos.ps	/^\/fdir () def$/
+/fdir	dlxos.ps	/^\/fdir () def$/
+/fdir	dlxos.ps	/^\/fdir () def$/
+/fdir	dlxos.ps	/^\/fdir () def$/
+/fmodstr	dlxos.ps	/^\/fmodstr (Tue Nov 07 14:08:38 2000) def$/
+/fmodstr	dlxos.ps	/^\/fmodstr (Tue Nov 07 14:08:38 2000) def$/
+/fmodstr	dlxos.ps	/^\/fmodstr (Tue Nov 07 14:08:38 2000) def$/
+/fmodstr	dlxos.ps	/^\/fmodstr (Tue Nov 07 14:08:38 2000) def$/
+/fmodstr	dlxos.ps	/^\/fmodstr (Tue Nov 07 14:08:38 2000) def$/
+/fmodstr	dlxos.ps	/^\/fmodstr (Tue Nov 07 14:08:38 2000) def$/
+/fname	dlxos.ps	/^\/fname (dlxos.s) def$/
+/fname	dlxos.ps	/^\/fname (dlxos.s) def$/
+/fname	dlxos.ps	/^\/fname (dlxos.s) def$/
+/fname	dlxos.ps	/^\/fname (dlxos.s) def$/
+/fname	dlxos.ps	/^\/fname (dlxos.s) def$/
+/fname	dlxos.ps	/^\/fname (dlxos.s) def$/
+/four	dlxos.ps	/^\/four         	\/five         	\/six          	\/seve/
+/ftail	dlxos.ps	/^\/ftail (dlxos.s) def$/
+/ftail	dlxos.ps	/^\/ftail (dlxos.s) def$/
+/ftail	dlxos.ps	/^\/ftail (dlxos.s) def$/
+/ftail	dlxos.ps	/^\/ftail (dlxos.s) def$/
+/ftail	dlxos.ps	/^\/ftail (dlxos.s) def$/
+/ftail	dlxos.ps	/^\/ftail (dlxos.s) def$/
+/h	dlxos.ps	/^\/h            	\/i            	\/j            	\/k   /
+/highlight_bars	dlxos.ps	/^\/highlight_bars {	% nlines lineheight output_y_mar/
+/igrave	dlxos.ps	/^\/igrave       	\/iacute       	\/icircumflex  	\/idie/
+/l	dlxos.ps	/^\/l            	\/m            	\/n            	\/o   /
+/languagelevel	dlxos.ps	/^\/languagelevel where {$/
+/less	dlxos.ps	/^\/less         	\/equal        	\/greater      	\/ques/
+/line_highlight	dlxos.ps	/^\/line_highlight {	% x y width height gray -> -$/
+/logicalnot	dlxos.ps	/^\/logicalnot   	\/hyphen       	\/registered   	\/macr/
+/ocircumflex	dlxos.ps	/^\/ocircumflex  	\/otilde       	\/odieresis    	\/divi/
+/onequarter	dlxos.ps	/^\/onequarter   	\/onehalf      	\/threequarters	\/ques/
+/oslash	dlxos.ps	/^\/oslash       	\/ugrave       	\/uacute       	\/ucir/
+/p	dlxos.ps	/^\/p            	\/q            	\/r            	\/s   /
+/page_prefeed	dlxos.ps	/^\/page_prefeed {		% bool -> -$/
+/pagenum	dlxos.ps	/^\/pagenum 1 def$/
+/pagenum	dlxos.ps	/^\/pagenum 2 def$/
+/pagenum	dlxos.ps	/^\/pagenum 3 def$/
+/pagenum	dlxos.ps	/^\/pagenum 4 def$/
+/pagenum	dlxos.ps	/^\/pagenum 5 def$/
+/pagenum	dlxos.ps	/^\/pagenum 6 def$/
+/pagenumstr	dlxos.ps	/^\/pagenumstr (1) def$/
+/pagenumstr	dlxos.ps	/^\/pagenumstr (2) def$/
+/pagenumstr	dlxos.ps	/^\/pagenumstr (3) def$/
+/pagenumstr	dlxos.ps	/^\/pagenumstr (4) def$/
+/pagenumstr	dlxos.ps	/^\/pagenumstr (5) def$/
+/pagenumstr	dlxos.ps	/^\/pagenumstr (6) def$/
+/parenleft	dlxos.ps	/^\/parenleft    	\/parenright   	\/asterisk     	\/plus/
+/quoteleft	dlxos.ps	/^\/quoteleft    	\/a            	\/b            	\/c   /
+/s	dlxos.ps	/^\/s {show} bind def$/
+/space	dlxos.ps	/^\/space        	\/exclam       	\/quotedbl     	\/numb/
+/space	dlxos.ps	/^\/space        	\/exclamdown   	\/cent         	\/ster/
+/t	dlxos.ps	/^\/t            	\/u            	\/v            	\/w   /
+/udieresis	dlxos.ps	/^\/udieresis    	\/yacute       	\/thorn        	\/ydie/
+/underlay	dlxos.ps	/^\/underlay {	% - -> -$/
+/user_header_p	dlxos.ps	/^\/user_header_p false def$/
+/user_header_p	dlxos.ps	/^\/user_header_p false def$/
+/user_header_p	dlxos.ps	/^\/user_header_p false def$/
+/user_header_p	dlxos.ps	/^\/user_header_p false def$/
+/user_header_p	dlxos.ps	/^\/user_header_p false def$/
+/user_header_p	dlxos.ps	/^\/user_header_p false def$/
+/user_underlay	dlxos.ps	/^\/user_underlay {	% - -> -$/
+/wrapped_line_mark	dlxos.ps	/^\/wrapped_line_mark {	% x y charwith charheight typ/
+/x	dlxos.ps	/^\/x            	\/y            	\/z            	\/brac/
+/zero	dlxos.ps	/^\/zero         	\/one          	\/two          	\/thre/
+AS	Makefile	/^AS = dlxasm$/
+ASSERT	dlxos.h	/^#define	ASSERT(cond,s)	(cond ? 0 : printf ("%s: %s/
+CC	Makefile	/^CC = gcc-dlx$/
+CC	#Makefile#	19
+CFLAGS	Makefile	/^CFLAGS = -mtraps -O3$/
+Close	filesys.h	/^  int	(*Close)(int);$/
+Close	os.dlx	12580
+Close	os.lst	13377
+Close	userprog1.dlx	63
+Close	userprog1.lst	69
+Close	userprog2.dlx	63
+Close	userprog2.lst	69
+Close	userprog.dlx	131
+Close	userprog.lst	154
+Close	usertraps.o	6
+Cond	synch.working.h	34
+Cond	synch.working.h	38
+Copyright	dlxos.o	/^;;; Copyright (c) 1999 by Ethan Miller$/
+Copyright	os.dlx	/^;;; Copyright (c) 1999 by Ethan Miller$/
+Copyright	os.lst	/^   10                      ;;; Copyright (c) 1999 /
+Cpu::CauseException	dlxsim.cc	/^Cpu::CauseException (int excType)$/
+Cpu::Close	dlxsim.cc	/^Cpu::Close ()$/
+Cpu::Cpu	dlxsim.cc	/^Cpu::Cpu (int msize)$/
+Cpu::DoRfe	dlxsim.cc	/^Cpu::DoRfe (uint32 inst)$/
+Cpu::ExecOne	dlxsim.cc	/^Cpu::ExecOne ()$/
+Cpu::Exit	dlxsim.cc	/^Cpu::Exit ()$/
+Cpu::FileIo	dlxsim.cc	/^Cpu::FileIo (int kind)$/
+Cpu::GetIFields	dlxsim.cc	/^Cpu::GetIFields (uint32 inst, uint32& src, uint32&/
+Cpu::GetJFields	dlxsim.cc	/^Cpu::GetJFields (uint32 inst, uint32& jaddr)$/
+Cpu::GetParam	dlxsim.cc	/^Cpu::GetParam (int p)$/
+Cpu::GetRFields	dlxsim.cc	/^Cpu::GetRFields (uint32 inst, uint32& src1, uint32/
+Cpu::IgnoreExit	dlxsim.cc	/^Cpu::IgnoreExit (int ignore)$/
+Cpu::Jump	dlxsim.cc	/^Cpu::Jump (uint32 jmpDst)$/
+Cpu::KbdGetChar	dlxsim.cc	/^Cpu::KbdGetChar ()$/
+Cpu::LoadMemory	dlxsim.cc	/^Cpu::LoadMemory (const char *file, uint32& startAt/
+Cpu::Open	dlxsim.cc	/^Cpu::Open ()$/
+Cpu::OutputBasicBlockActual	dlxsim.cc	/^Cpu::OutputBasicBlockActual ()$/
+Cpu::Printf	dlxsim.cc	/^Cpu::Printf ()$/
+Cpu::Random	dlxsim.cc	/^Cpu::Random ()$/
+Cpu::Read	dlxsim.cc	/^Cpu::Read ()$/
+Cpu::ReadWord	dlxsim.cc	/^Cpu::ReadWord (uint32 vaddr, uint32 &val, uint32 o/
+Cpu::Seek	dlxsim.cc	/^Cpu::Seek ()$/
+Cpu::SetResult	dlxsim.cc	/^Cpu::SetResult (uint32 r)$/
+Cpu::SetTimer	dlxsim.cc	/^Cpu::SetTimer (uint32 usecs)$/
+Cpu::SignExtend16	dlxsim.cc	/^Cpu::SignExtend16 (uint32& v)$/
+Cpu::SignExtend8	dlxsim.cc	/^Cpu::SignExtend8 (uint32& v)$/
+Cpu::Srandom	dlxsim.cc	/^Cpu::Srandom ()$/
+Cpu::TestWriteWord	dlxsim.cc	/^Cpu::TestWriteWord (uint32 vaddr)$/
+Cpu::Timerget	dlxsim.cc	/^Cpu::Timerget()$/
+Cpu::TraceFile	dlxsim.cc	/^Cpu::TraceFile (char *name)$/
+Cpu::VaddrToPaddr	dlxsim.cc	/^Cpu::VaddrToPaddr (uint32 vaddr, uint32& paddr, ui/
+Cpu::Write	dlxsim.cc	/^Cpu::Write ()$/
+Cpu::WriteWord	dlxsim.cc	/^Cpu::WriteWord (uint32 vaddr, uint32 val)$/
+Cpu::fpInstrs	dlxsim.cc	1854
+Cpu::regInstrs	dlxsim.cc	1782
+Cpu::rrrInstrs	dlxsim.cc	1710
+DLX_KBD_GETCHAR	traps.h	62
+DLX_KBD_INTR	traps.h	64
+DLX_KBD_NCHARSIN	traps.h	63
+DLX_KBD_NCHARSOUT	traps.h	61
+DLX_KBD_PUTCHAR	traps.h	60
+DLX_MEMSIZE_ADDRESS	memory.h	14
+DLX_PROCESS_QUANTUM	dlxos.h	12
+DLX_STATUS_FPTRUE	dlx.h	9
+DLX_STATUS_INTRMASK	dlx.h	8
+DLX_STATUS_PAGE_TABLE	dlx.h	11
+DLX_STATUS_SYSMODE	dlx.h	10
+DLX_STATUS_TLB	dlx.h	12
+DLX_TIMER_ADDRESS	traps.h	59
+Delete	filesys.h	/^  int	(*Delete)(const char *);$/
+DisableIntrs	dlxos.h	/^DisableIntrs ()$/
+Dlx	filesys.h	60
+EnableIntrs	dlxos.h	/^EnableIntrs ()$/
+FS_BUFFER_SIZE	filesys.h	33
+FS_FS_BUILTIN	filesys.h	16
+FS_FS_DLXOS	filesys.h	17
+FS_MAX_OPEN_FILES	filesys.h	35
+FS_MODE_CREATE	filesys.h	24
+FS_MODE_READ	filesys.h	19
+FS_MODE_RW	filesys.h	21
+FS_MODE_WRITE	filesys.h	20
+FS_SEEK_CUR	filesys.h	30
+FS_SEEK_END	filesys.h	31
+FS_SEEK_SET	filesys.h	29
+FdValid	filesys.c	/^FdValid (int fd)$/
+Fs	filesys.h	37
+Fs	filesys.h	44
+FsClose	filesys.c	/^FsClose (int fd)$/
+FsDelete	filesys.c	/^FsDelete (const char *name)$/
+FsDlxClose	filesys.c	/^FsDlxClose (int f)$/
+FsDlxDelete	filesys.c	/^FsDlxDelete (const char *file)$/
+FsDlxInfo	filesys.h	50
+FsDlxInfo	filesys.h	52
+FsDlxIo	filesys.c	/^FsDlxIo (int fd, char *buf, int n, int which)$/
+FsDlxOpen	filesys.c	/^FsDlxOpen (int f, const char *name, int mode)$/
+FsDlxRead	filesys.c	/^FsDlxRead (int fd, char *buf, int n)$/
+FsDlxSeek	filesys.c	/^FsDlxSeek (int f, int offset, int whence)$/
+FsDlxWrite	filesys.c	/^FsDlxWrite (int fd, char *buf, int n)$/
+FsFreeEntry	filesys.c	/^FsFreeEntry (int x)$/
+FsModuleInit	filesys.c	/^FsModuleInit ()$/
+FsOpen	filesys.c	/^FsOpen (const char *name, int mode)$/
+FsOpenFile	filesys.h	54
+FsOpenFile	filesys.h	62
+FsRead	filesys.c	/^FsRead (int fd, char *buf, int n)$/
+FsSeek	filesys.c	/^FsSeek (int fd, int offset, int whence)$/
+FsUnixClose	filesys.c	/^FsUnixClose (int x)$/
+FsUnixDelete	filesys.c	/^FsUnixDelete (const char *name)$/
+FsUnixInfo	filesys.h	46
+FsUnixInfo	filesys.h	48
+FsUnixOpen	filesys.c	/^FsUnixOpen (int x, const char *name, int mode)$/
+FsUnixRead	filesys.c	/^FsUnixRead (int x, char *buf, int n)$/
+FsUnixSeek	filesys.c	/^FsUnixSeek (int x, int offset, int where)$/
+FsUnixWrite	filesys.c	/^FsUnixWrite (int x, char *buf, int n)$/
+FsWrite	filesys.c	/^FsWrite (int fd, char *buf, int n)$/
+GetCurrentPid	process.c	/^unsigned GetCurrentPid()$/
+GetIntFromTrapArg	traps.c	/^static int GetIntFromTrapArg(uint32 *trapArgs, int/
+GetUintFromTrapArg	traps.c	/^static uint32 GetUintFromTrapArg(uint32 *trapArgs,/
+However	dlxos.o	50
+However	os.dlx	57
+However	os.lst	55
+INCS	Makefile	/^INCS = dlxos.h traps.h filesys.h memory.h misc.h p/
+INVALID_PROC	synch.h	20
+INVALID_SEM	lab3.h	6
+INVALID_SEM	synch.h	19
+ISR	dlxos.o	155
+ISR	os.dlx	162
+ISR	os.lst	157
+InstAdd	dlxsim.cc	/^InstAdd (uint32 inst, Cpu *cpu)$/
+InstAddd	dlxsim.cc	/^InstAddd (uint32 inst, Cpu *cpu)$/
+InstAddf	dlxsim.cc	/^InstAddf (uint32 inst, Cpu *cpu)$/
+InstAddi	dlxsim.cc	/^InstAddi (uint32 inst, Cpu *cpu)$/
+InstAddu	dlxsim.cc	/^InstAddu (uint32 inst, Cpu *cpu)$/
+InstAddui	dlxsim.cc	/^InstAddui (uint32 inst, Cpu *cpu)$/
+InstAnd	dlxsim.cc	/^InstAnd (uint32 inst, Cpu *cpu)$/
+InstAndi	dlxsim.cc	/^InstAndi (uint32 inst, Cpu *cpu)$/
+InstBeqz	dlxsim.cc	/^InstBeqz (uint32 inst, Cpu *cpu)$/
+InstBfpf	dlxsim.cc	/^InstBfpf (uint32 inst, Cpu *cpu)$/
+InstBfpt	dlxsim.cc	/^InstBfpt (uint32 inst, Cpu *cpu)$/
+InstBnez	dlxsim.cc	/^InstBnez (uint32 inst, Cpu *cpu)$/
+InstCvtd2f	dlxsim.cc	/^InstCvtd2f (uint32 inst, Cpu *cpu)$/
+InstCvtd2i	dlxsim.cc	/^InstCvtd2i (uint32 inst, Cpu *cpu)$/
+InstCvtf2d	dlxsim.cc	/^InstCvtf2d (uint32 inst, Cpu *cpu)$/
+InstCvtf2i	dlxsim.cc	/^InstCvtf2i (uint32 inst, Cpu *cpu)$/
+InstCvti2d	dlxsim.cc	/^InstCvti2d (uint32 inst, Cpu *cpu)$/
+InstCvti2f	dlxsim.cc	/^InstCvti2f (uint32 inst, Cpu *cpu)$/
+InstDiv	dlxsim.cc	/^InstDiv (uint32 inst, Cpu *cpu)$/
+InstDivd	dlxsim.cc	/^InstDivd (uint32 inst, Cpu *cpu)$/
+InstDivf	dlxsim.cc	/^InstDivf (uint32 inst, Cpu *cpu)$/
+InstDivu	dlxsim.cc	/^InstDivu (uint32 inst, Cpu *cpu)$/
+InstEqd	dlxsim.cc	/^InstEqd (uint32 inst, Cpu *cpu)$/
+InstEqf	dlxsim.cc	/^InstEqf (uint32 inst, Cpu *cpu)$/
+InstGed	dlxsim.cc	/^InstGed (uint32 inst, Cpu *cpu)$/
+InstGef	dlxsim.cc	/^InstGef (uint32 inst, Cpu *cpu)$/
+InstGtd	dlxsim.cc	/^InstGtd (uint32 inst, Cpu *cpu)$/
+InstGtf	dlxsim.cc	/^InstGtf (uint32 inst, Cpu *cpu)$/
+InstIllegal	dlxsim.cc	/^InstIllegal (uint32 inst, Cpu *cpu)$/
+InstJal	dlxsim.cc	/^InstJal (uint32 inst, Cpu *cpu)$/
+InstJalr	dlxsim.cc	/^InstJalr (uint32 inst, Cpu *cpu)$/
+InstJmp	dlxsim.cc	/^InstJmp (uint32 inst, Cpu *cpu)$/
+InstJr	dlxsim.cc	/^InstJr (uint32 inst, Cpu *cpu)$/
+InstLb	dlxsim.cc	/^InstLb (uint32 inst, Cpu *cpu)$/
+InstLbu	dlxsim.cc	/^InstLbu (uint32 inst, Cpu *cpu)$/
+InstLd	dlxsim.cc	/^InstLd (uint32 inst, Cpu *cpu)$/
+InstLed	dlxsim.cc	/^InstLed (uint32 inst, Cpu *cpu)$/
+InstLef	dlxsim.cc	/^InstLef (uint32 inst, Cpu *cpu)$/
+InstLf	dlxsim.cc	/^InstLf (uint32 inst, Cpu *cpu)$/
+InstLh	dlxsim.cc	/^InstLh (uint32 inst, Cpu *cpu)$/
+InstLhi	dlxsim.cc	/^InstLhi (uint32 inst, Cpu *cpu)$/
+InstLhu	dlxsim.cc	/^InstLhu (uint32 inst, Cpu *cpu)$/
+InstLtd	dlxsim.cc	/^InstLtd (uint32 inst, Cpu *cpu)$/
+InstLtf	dlxsim.cc	/^InstLtf (uint32 inst, Cpu *cpu)$/
+InstLw	dlxsim.cc	/^InstLw (uint32 inst, Cpu *cpu)$/
+InstMovd	dlxsim.cc	/^InstMovd (uint32 inst, Cpu *cpu)$/
+InstMovf	dlxsim.cc	/^InstMovf (uint32 inst, Cpu *cpu)$/
+InstMovfp2i	dlxsim.cc	/^InstMovfp2i (uint32 inst, Cpu *cpu)$/
+InstMovi2fp	dlxsim.cc	/^InstMovi2fp (uint32 inst, Cpu *cpu)$/
+InstMovi2s	dlxsim.cc	/^InstMovi2s (uint32 inst, Cpu *cpu)$/
+InstMovs2i	dlxsim.cc	/^InstMovs2i (uint32 inst, Cpu *cpu)$/
+InstMult	dlxsim.cc	/^InstMult (uint32 inst, Cpu *cpu)$/
+InstMultd	dlxsim.cc	/^InstMultd (uint32 inst, Cpu *cpu)$/
+InstMultf	dlxsim.cc	/^InstMultf (uint32 inst, Cpu *cpu)$/
+InstMultu	dlxsim.cc	/^InstMultu (uint32 inst, Cpu *cpu)$/
+InstNed	dlxsim.cc	/^InstNed (uint32 inst, Cpu *cpu)$/
+InstNef	dlxsim.cc	/^InstNef (uint32 inst, Cpu *cpu)$/
+InstNop	dlxsim.cc	/^InstNop (uint32, Cpu *cpu)$/
+InstOr	dlxsim.cc	/^InstOr (uint32 inst, Cpu *cpu)$/
+InstOri	dlxsim.cc	/^InstOri (uint32 inst, Cpu *cpu)$/
+InstRfe	dlxsim.cc	/^InstRfe (uint32 inst, Cpu *cpu)$/
+InstSb	dlxsim.cc	/^InstSb (uint32 inst, Cpu *cpu)$/
+InstSd	dlxsim.cc	/^InstSd (uint32 inst, Cpu *cpu)$/
+InstSeq	dlxsim.cc	/^InstSeq (uint32 inst, Cpu *cpu)$/
+InstSeqi	dlxsim.cc	/^InstSeqi (uint32 inst, Cpu *cpu)$/
+InstSf	dlxsim.cc	/^InstSf (uint32 inst, Cpu *cpu)$/
+InstSge	dlxsim.cc	/^InstSge (uint32 inst, Cpu *cpu)$/
+InstSgei	dlxsim.cc	/^InstSgei (uint32 inst, Cpu *cpu)$/
+InstSgt	dlxsim.cc	/^InstSgt (uint32 inst, Cpu *cpu)$/
+InstSgti	dlxsim.cc	/^InstSgti (uint32 inst, Cpu *cpu)$/
+InstSh	dlxsim.cc	/^InstSh (uint32 inst, Cpu *cpu)$/
+InstSle	dlxsim.cc	/^InstSle (uint32 inst, Cpu *cpu)$/
+InstSlei	dlxsim.cc	/^InstSlei (uint32 inst, Cpu *cpu)$/
+InstSll	dlxsim.cc	/^InstSll (uint32 inst, Cpu *cpu)$/
+InstSlli	dlxsim.cc	/^InstSlli (uint32 inst, Cpu *cpu)$/
+InstSlt	dlxsim.cc	/^InstSlt (uint32 inst, Cpu *cpu)$/
+InstSlti	dlxsim.cc	/^InstSlti (uint32 inst, Cpu *cpu)$/
+InstSne	dlxsim.cc	/^InstSne (uint32 inst, Cpu *cpu)$/
+InstSnei	dlxsim.cc	/^InstSnei (uint32 inst, Cpu *cpu)$/
+InstSra	dlxsim.cc	/^InstSra (uint32 inst, Cpu *cpu)$/
+InstSrai	dlxsim.cc	/^InstSrai (uint32 inst, Cpu *cpu)$/
+InstSrl	dlxsim.cc	/^InstSrl (uint32 inst, Cpu *cpu)$/
+InstSrli	dlxsim.cc	/^InstSrli (uint32 inst, Cpu *cpu)$/
+InstSub	dlxsim.cc	/^InstSub (uint32 inst, Cpu *cpu)$/
+InstSubd	dlxsim.cc	/^InstSubd (uint32 inst, Cpu *cpu)$/
+InstSubf	dlxsim.cc	/^InstSubf (uint32 inst, Cpu *cpu)$/
+InstSubi	dlxsim.cc	/^InstSubi (uint32 inst, Cpu *cpu)$/
+InstSubu	dlxsim.cc	/^InstSubu (uint32 inst, Cpu *cpu)$/
+InstSubui	dlxsim.cc	/^InstSubui (uint32 inst, Cpu *cpu)$/
+InstSw	dlxsim.cc	/^InstSw (uint32 inst, Cpu *cpu)$/
+InstTrap	dlxsim.cc	/^InstTrap (uint32 inst, Cpu *cpu)$/
+InstXor	dlxsim.cc	/^InstXor (uint32 inst, Cpu *cpu)$/
+InstXori	dlxsim.cc	/^InstXori (uint32 inst, Cpu *cpu)$/
+KbdModuleInit	traps.c	/^KbdModuleInit ()$/
+L106	synch.working.s	/^L106:$/
+L107	synch.working.s	/^L107:$/
+L108	synch.working.s	/^L108:$/
+L11	synch.working.s	/^L11:$/
+L12	synch.working.s	/^L12:$/
+L1_MAX_ENTRIES	memory.h	33
+L38	synch.working.s	/^L38:$/
+L48	synch.working.s	/^L48:$/
+L49	synch.working.s	/^L49:$/
+L5	synch.working.s	/^L5:$/
+L50	synch.working.s	/^L50:$/
+L52	synch.working.s	/^L52:$/
+L53	synch.working.s	/^L53:$/
+L58	synch.working.s	/^L58:$/
+L59	synch.working.s	/^L59:$/
+L6	synch.working.s	/^L6:$/
+L60	synch.working.s	/^L60:$/
+L63	synch.working.s	/^L63:$/
+L64	synch.working.s	/^L64:$/
+L65	synch.working.s	/^L65:$/
+L78	synch.working.s	/^L78:$/
+L80	synch.working.s	/^L80:$/
+L89	synch.working.s	/^L89:$/
+L91	synch.working.s	/^L91:$/
+L95	synch.working.s	/^L95:$/
+LC0	synch.working.s	/^LC0:$/
+LC1	synch.working.s	/^LC1:$/
+LC2	synch.working.s	/^LC2:$/
+LC3	synch.working.s	/^LC3:$/
+Link	queue.h	19
+Link	queue.h	24
+Lock	synch.working.h	28
+Lock	synch.working.h	32
+MAX_ARGS	process.h	62
+MAX_SEMS	synch.h	15
+MEMORY_L1_PAGE_SIZE_BITS	memory.h	26
+MEMORY_L2_PAGE_SIZE_BITS	memory.h	27
+MEMORY_MAX_PAGES	memory.h	31
+MEMORY_PAGE_MASK	memory.h	30
+MEMORY_PAGE_SIZE	memory.h	28
+MEMORY_PTE_DIRTY	memory.h	39
+MEMORY_PTE_MASK	memory.h	42
+MEMORY_PTE_REFERENCED	memory.h	41
+MEMORY_PTE_VALID	memory.h	37
+Makefile.depend	Makefile	/^Makefile.depend: depend$/
+MemSize	os.dlx	2
+MemSize	os.lst	3
+MemSize	userprog1.dlx	2
+MemSize	userprog1.lst	3
+MemSize	userprog2.dlx	2
+MemSize	userprog2.lst	3
+MemSize	userprog.dlx	2
+MemSize	userprog.lst	3
+MemoryAllocPage	memory.c	/^MemoryAllocPage ()$/
+MemoryCopySystemToUser	memory.c	/^MemoryCopySystemToUser (PCB *pcb, unsigned char *f/
+MemoryCopyUserToSystem	memory.c	/^MemoryCopyUserToSystem (PCB *pcb, unsigned char *f/
+MemoryFreePage	memory.c	/^MemoryFreePage(uint32 page)$/
+MemoryFreePte	memory.c	/^MemoryFreePte (uint32 pte)$/
+MemoryGetOperandAddress	memory.c	/^MemoryGetOperandAddress (PCB *pcb, uint32 instr)$/
+MemoryGetSize	memory.c	/^MemoryGetSize ()$/
+MemoryModuleInit	memory.c	/^MemoryModuleInit ()$/
+MemoryPteToPage	memory.c	/^MemoryPteToPage (uint32 pte)$/
+MemorySetFreemap	memory.c	/^MemorySetFreemap (int p, int b)$/
+MemorySetupPte	memory.c	/^MemorySetupPte (uint32 page)$/
+MemoryTranslateUserToSystem	memory.c	/^MemoryTranslateUserToSystem (PCB *pcb, uint32 addr/
+Miller	os.dlx	12554
+Miller	os.dlx	12578
+Miller	os.dlx	12674
+Miller	os.lst	13353
+Miller	os.lst	13375
+Miller	os.lst	13458
+Miller	userprog1.dlx	61
+Miller	userprog1.lst	67
+Miller	userprog2.dlx	61
+Miller	userprog2.lst	67
+Miller	userprog.dlx	129
+Miller	userprog.lst	152
+Miller	usertraps.o	4
+Mprocess	process.c	/^main (int argc, char *argv[])$/
+Muserprog	userprog.c	/^main(int argc, char *argv[])$/
+Muserprog.c~	userprog.c~	/^main(int argc, char *argv[])$/
+Muserprog1	userprog1.c	/^main()$/
+Muserprog2	userprog2.c	/^main()$/
+MyFuncRetZero	process.c	/^float MyFuncRetZero()$/
+NOTE:	dlxos.o	134
+NOTE:	os.dlx	141
+NOTE:	os.lst	137
+NULL	lab3.h	5
+NULL	queue.h	14
+Note	dlxos.o	183
+Note	os.dlx	190
+Note	os.lst	184
+OBJS	Makefile	/^OBJS = $(addsuffix .o, $(basename $(SRCS)))$/
+Open	filesys.h	/^  int	(*Open)(int, const char *, int);$/
+PCB	process.h	34
+PCB	process.h	43
+PROCESS_INIT_ISR_SYS	process.h	19
+PROCESS_INIT_ISR_USER	process.h	20
+PROCESS_MAX_PROCS	process.h	17
+PROCESS_STACK_CAUSE	process.h	53
+PROCESS_STACK_FAULT	process.h	54
+PROCESS_STACK_FRAME_SIZE	process.h	59
+PROCESS_STACK_FREG	process.h	50
+PROCESS_STACK_IAR	process.h	51
+PROCESS_STACK_IREG	process.h	47
+PROCESS_STACK_ISR	process.h	52
+PROCESS_STACK_PREV_FRAME	process.h	58
+PROCESS_STACK_PTBASE	process.h	55
+PROCESS_STACK_PTBITS	process.h	57
+PROCESS_STACK_PTSIZE	process.h	56
+PROCESS_STATUS_FREE	process.h	22
+PROCESS_STATUS_MASK	process.h	27
+PROCESS_STATUS_RUNNABLE	process.h	23
+PROCESS_STATUS_STARTING	process.h	25
+PROCESS_STATUS_WAITING	process.h	24
+PROCESS_STATUS_ZOMBIE	process.h	26
+PROCESS_TYPE_SYSTEM	process.h	28
+PROCESS_TYPE_USER	process.h	29
+PageFaultHandler	process.c	/^void PageFaultHandler()$/
+ProcessDestroy	process.c	/^ProcessDestroy (PCB *pcb)$/
+ProcessExit	process.c	/^ProcessExit ()$/
+ProcessFork	process.c	/^ProcessFork (VoidFunc func, uint32 param, char *na/
+ProcessFreeResources	process.c	/^ProcessFreeResources (PCB *pcb)$/
+ProcessGetCodeInfo	process.c	/^ProcessGetCodeInfo (const char *file, uint32 *star/
+ProcessGetFromFile	process.c	/^ProcessGetFromFile (int fd, unsigned char *buf, ui/
+ProcessKill	process.c	/^void ProcessKill (PCB *pcb)$/
+ProcessModuleInit	process.c	/^ProcessModuleInit ()$/
+ProcessSchedule	process.c	/^ProcessSchedule ()$/
+ProcessSetResult	process.c	/^ProcessSetResult (PCB * pcb, uint32 result)$/
+ProcessSetStatus	process.c	/^ProcessSetStatus (PCB *pcb, int status)$/
+ProcessSuspend	process.c	/^ProcessSuspend (PCB *suspend)$/
+ProcessWakeup	process.c	/^ProcessWakeup (PCB *wakeup)$/
+QUEUE_MAX_LINKS	queue.h	17
+Queue	queue.h	26
+Queue	queue.h	30
+QueueAllocLink	queue.c	/^QueueAllocLink ()$/
+QueueEmpty	queue.h	/^QueueEmpty (Queue *q)$/
+QueueFirst	queue.h	/^QueueFirst (Queue *q)$/
+QueueFreeLink	queue.c	/^QueueFreeLink (Link *l)$/
+QueueInit	queue.c	/^QueueInit (Queue *q)$/
+QueueInsertAfter	queue.h	/^QueueInsertAfter (Queue *q, Link *after, Link *l)$/
+QueueInsertFirst	queue.h	/^QueueInsertFirst (Queue *q, Link *l)$/
+QueueInsertLast	queue.h	/^QueueInsertLast (Queue *q, Link *l)$/
+QueueLast	queue.h	/^QueueLast (Queue *q)$/
+QueueLength	queue.h	/^QueueLength (Queue *q)$/
+QueueLinkInit	queue.h	/^QueueLinkInit (Link *l, void *obj)$/
+QueueModuleInit	queue.c	/^QueueModuleInit ()$/
+QueueNext	queue.h	/^QueueNext (Link *l)$/
+QueuePrev	queue.h	/^QueuePrev (Link *l)$/
+QueueRemove	queue.h	/^QueueRemove (Link *l)$/
+Read	filesys.h	/^  int	(*Read)(int, char *, int);$/
+RestoreIntrs	dlxos.h	/^RestoreIntrs (int intrs)$/
+SIZE_ARG_BUFF	process.h	60
+SRCS	Makefile	/^SRCS = filesys.c memory.c misc.c process.c queue.c/
+Sawdey	os.dlx	347
+Sawdey	os.dlx	12707
+Sawdey	os.lst	335
+Sawdey	os.lst	13487
+Sawdey	trap_random.o	4
+Seek	filesys.h	/^  int	(*Seek)(int, int, int);$/
+Sem	synch.h	21
+Sem	synch.h	26
+Sem	synch.working.h	19
+Sem	synch.working.h	22
+SemCreate	synch.c	/^SemCreate(int count)$/
+SemHandleSignal	synch.c	/^int SemHandleSignal(sem_t sem)$/
+SemHandleWait	synch.c	/^int SemHandleWait(sem_t sem)$/
+SemInit	synch.c	/^SemInit (Sem *sem, int count)$/
+SemSignal	synch.c	/^SemSignal (Sem *sem)$/
+SemWait	synch.c	/^SemWait (Sem *sem)$/
+SynchModuleInit	synch.c	/^SynchModuleInit()$/
+SysprocCreateProcesses	sysproc.c	/^SysprocCreateProcesses ()$/
+TOP_VIRTUAL_ADDRESS_SPACE	memory.h	34
+TRAP_ACCESS	traps.h	18
+TRAP_ADDRESS	traps.h	17
+TRAP_CLOSE	traps.h	40
+TRAP_CONTEXT_SWITCH	traps.h	46
+TRAP_DELETE	traps.h	41
+TRAP_DIV0	traps.h	20
+TRAP_EXIT	traps.h	42
+TRAP_FORMAT	traps.h	22
+TRAP_ILLEGALINST	traps.h	16
+TRAP_KBD	traps.h	26
+TRAP_LSEEK	traps.h	37
+TRAP_OPEN	traps.h	39
+TRAP_OVERFLOW	traps.h	19
+TRAP_PAGEFAULT	traps.h	23
+TRAP_PRINTF	traps.h	34
+TRAP_PRIVILEGE	traps.h	21
+TRAP_PROCESS_CREATE	traps.h	53
+TRAP_PROCESS_FORK	traps.h	51
+TRAP_PROCESS_GETPID	traps.h	52
+TRAP_PROCESS_SLEEP	traps.h	49
+TRAP_PROCESS_WAKEUP	traps.h	50
+TRAP_READ	traps.h	35
+TRAP_SEEK	traps.h	38
+TRAP_SEM_CREATE	traps.h	54
+TRAP_SEM_SIGNAL	traps.h	56
+TRAP_SEM_WAIT	traps.h	55
+TRAP_STACK_SIZE	traps.h	66
+TRAP_TIMER	traps.h	25
+TRAP_TLBFAULT	traps.h	24
+TRAP_TRAP_INSTR	traps.h	29
+TRAP_WRITE	traps.h	36
+The	dlxos.o	180
+The	os.dlx	187
+The	os.lst	181
+TimerSet	traps.c	/^TimerSet (int us)$/
+TrapPrintfHandler	traps.c	/^TrapPrintfHandler (uint32 *trapArgs, int sysMode)$/
+TrapProcessCreateHandler	traps.c	/^static void TrapProcessCreateHandler(uint32 *trapA/
+Unix	filesys.h	59
+VoidFunc	process.h	31
+We	dlxos.o	54
+We	os.dlx	61
+We	os.lst	58
+Write	filesys.h	/^  int	(*Write)(int, char *, int);$/
+_Close	usertraps.s	/^_Close:		$/
+_CondBroadcast	synch.working.s	/^_CondBroadcast:$/
+_CondInit	synch.working.s	/^_CondInit:$/
+_CondSignal	synch.working.s	/^_CondSignal:$/
+_CondWait	synch.working.s	/^_CondWait:$/
+_CurrentIntrs	dlxos.o	322
+_CurrentIntrs	dlxos.s	/^_CurrentIntrs:$/
+_CurrentIntrs	os.dlx	329
+_CurrentIntrs	os.lst	317
+_DisableIntrs	dlxos.o	193
+_DisableIntrs	os.dlx	200
+_DisableIntrs	os.lst	194
+_LAB4_H_	lab3.h	3
+_LockAcquire	synch.working.s	/^_LockAcquire:$/
+_LockInit	synch.working.s	/^_LockInit:$/
+_LockRelease	synch.working.s	/^_LockRelease:$/
+_Lseek	os.dlx	12669
+_Lseek	os.lst	13454
+_Lseek	usertraps.s	/^_Lseek:		$/
+_Open	userprog1.dlx	77
+_Open	userprog1.lst	79
+_Open	userprog2.dlx	77
+_Open	userprog2.lst	79
+_Open	userprog.dlx	145
+_Open	userprog.lst	164
+_Open	usertraps.o	20
+_Open	usertraps.s	/^_Open:		$/
+_Printf	usertraps.s	/^_Printf:		$/
+_ProcessSleep	dlxos.o	324
+_ProcessSleep	dlxos.s	/^_ProcessSleep:	$/
+_ProcessSleep	os.dlx	331
+_ProcessSleep	os.dlx	343
+_ProcessSleep	os.lst	319
+_ProcessSleep	os.lst	331
+_Putchar	usertraps.s	/^_Putchar:		$/
+_QueueEmpty	synch.working.s	/^_QueueEmpty:$/
+_QueueFirst	synch.working.s	/^_QueueFirst:$/
+_QueueInsertAfter	synch.working.s	/^_QueueInsertAfter:$/
+_QueueInsertFirst	synch.working.s	/^_QueueInsertFirst:$/
+_QueueInsertLast	synch.working.s	/^_QueueInsertLast:$/
+_QueueLast	synch.working.s	/^_QueueLast:$/
+_QueueLength	synch.working.s	/^_QueueLength:$/
+_QueueLinkInit	synch.working.s	/^_QueueLinkInit:$/
+_QueueNext	synch.working.s	/^_QueueNext:$/
+_QueuePrev	synch.working.s	/^_QueuePrev:$/
+_QueueRemove	synch.working.s	/^_QueueRemove:$/
+_Read	usertraps.s	/^_Read:		$/
+_SemInit	synch.working.s	/^_SemInit:$/
+_SemSignal	synch.working.s	/^_SemSignal:$/
+_SemWait	synch.working.s	/^_SemWait:$/
+_SetIntrs	dlxos.s	/^_SetIntrs:$/
+_Write	usertraps.s	/^_Write:		$/
+_dlx_h_	dlx.h	6
+_dlxos_h_	dlxos.h	6
+_dlxtraps_h_	traps.h	14
+_exit	os.dlx	12566
+_exit	os.dlx	12677
+_exit	os.lst	13364
+_exit	os.lst	13461
+_exitsim	os.dlx	12676
+_exitsim	os.lst	13460
+_filesys_h_	filesys.h	14
+_getpid	usertraps.s	/^_getpid:$/
+_intrhandler	dlxos.o	48
+_intrhandler	dlxos.o	174
+_intrhandler	dlxos.s	/^_intrhandler:$/
+_intrhandler	os.dlx	55
+_intrhandler	os.dlx	181
+_intrhandler	os.lst	53
+_intrhandler	os.lst	176
+_intrreturn	dlxos.o	189
+_intrreturn	dlxos.s	/^_intrreturn:$/
+_intrreturn	os.dlx	196
+_intrreturn	os.lst	190
+_isspace	filesys.o	10
+_isspace	memory.o	10
+_isspace	misc.o	6
+_isspace	os.dlx	376
+_isspace	os.lst	374
+_isspace	process.o	6
+_isspace	queue.o	6
+_isspace	synch.o	6
+_isspace	synch.working.s	/^_isspace:$/
+_isspace	sysproc.o	6
+_isspace	traps.o	10
+_isspace	userprog1.dlx	181
+_isspace	userprog1.lst	168
+_isspace	userprog2.dlx	181
+_isspace	userprog2.lst	168
+_isspace	userprog.dlx	249
+_isspace	userprog.lst	253
+_isxdigit	synch.working.s	/^_isxdigit:$/
+_lastosaddress	osend.s	/^_lastosaddress:$/
+_lseek	os.dlx	12625
+_lseek	os.lst	13416
+_main	userprog1.dlx	17
+_main	userprog1.lst	23
+_main	userprog1.o	10
+_main	userprog2.dlx	17
+_main	userprog2.lst	23
+_main	userprog2.o	10
+_main	userprog.dlx	32
+_main	userprog.lst	55
+_main	userprog.o	25
+_memory_h_	memory.h	10
+_misc_h_	misc.h	6
+_osinit	dlxos.s	/^_osinit:$/
+_process_create	usertraps.s	/^_process_create:$/
+_process_h_	process.h	10
+_queue_h_	queue.h	11
+_random	trap_random.s	/^_random:		$/
+_sem_create	usertraps.s	/^_sem_create:$/
+_sem_signal	userprog1.dlx	173
+_sem_signal	userprog1.lst	163
+_sem_signal	userprog2.dlx	173
+_sem_signal	userprog2.lst	163
+_sem_signal	userprog.dlx	241
+_sem_signal	userprog.lst	248
+_sem_signal	usertraps.s	/^_sem_signal:$/
+_sem_wait	usertraps.s	/^_sem_wait:$/
+_srandom	os.dlx	365
+_srandom	os.lst	351
+_srandom	trap_random.s	/^_srandom:		$/
+_synch_h_	synch.h	11
+_synch_h_	synch.working.h	15
+_syscall_h_	syscall.h	9
+address	osend.o	1
+align	userprog1.dlx	69
+align	userprog1.lst	73
+align	userprog2.dlx	69
+align	userprog2.lst	73
+align	userprog.dlx	137
+align	userprog.lst	158
+align	usertraps.o	12
+all	Makefile	/^all: os.dlx.obj  userprog userprog1 userprog2$/
+ame	dlxos.o	135
+ame	os.dlx	142
+ame	os.lst	138
+atomic	dlxos.o	190
+atomic	os.dlx	197
+atomic	os.lst	191
+bcopy	misc.c	/^bcopy (char *src, char *dst, int count)$/
+buffer	filesys.h	57
+bzero	misc.c	/^bzero (char *dst, int count)$/
+chaseTail	sysproc.c	/^chaseTail (int me)$/
+clean	Makefile	/^clean:$/
+close	os.dlx	/^;;; with names such as open and close (lower case)/
+close	os.lst	/^12582                      ;;; with names such as /
+close	userprog1.dlx	/^;;; with names such as open and close (lower case)/
+close	userprog1.lst	/^   65                      ;;; with names such as /
+close	userprog2.dlx	/^;;; with names such as open and close (lower case)/
+close	userprog2.lst	/^   65                      ;;; with names such as /
+close	userprog.dlx	/^;;; with names such as open and close (lower case)/
+close	userprog.lst	/^  133                      ;;; with names such as /
+close	usertraps.o	/^;;; with names such as open and close (lower case)/
+condLock	synch.working.h	35
+condSem	synch.working.h	36
+contents	os.lst	1
+contents	userprog1.lst	1
+contents	userprog2.lst	1
+contents	userprog.lst	1
+count	synch.h	23
+count	synch.working.h	21
+course	dlxos.o	136
+course	os.dlx	143
+course	os.lst	139
+curpos	filesys.h	51
+currentPCB	process.c	20
+currentSavedFrame	process.h	35
+currently	dlxos.o	78
+currently	os.dlx	85
+currently	os.lst	81
+dbprintf	dlxos.h	/^#define	dbprintf(flag, format, args...) 		\\$/
+debug	dlxsim.cc	24
+debugstr	process.c	48
+depend	Makefile	/^depend: $(SRCS) $(INCS)$/
+dindex	misc.c	/^dindex (const char *s, int c)$/
+ditoa	misc.c	/^ditoa (int n, char *buf)$/
+dlxos.o	Makefile	/^dlxos.o: dlxos.s$/
+dmindex	misc.c	/^dmindex (const char *s, const char *match)$/
+doSomething	sysproc.c	/^doSomething (int me)$/
+dointerrupt	traps.c	/^dointerrupt (unsigned int cause, unsigned int iar,/
+domain	os.dlx	12554
+domain	os.lst	13353
+dstrcat	misc.c	/^dstrcat (char *onto, const char *addn)$/
+dstrcpy	misc.c	/^dstrcpy (char *to, const char *from)$/
+dstrlen	misc.c	/^dstrlen (const char *s)$/
+dstrncmp	misc.c	/^dstrncmp (const char *s1, const char *s2, int n)$/
+dstrncpy	misc.c	/^dstrncpy (char *to, const char *from, int n)$/
+dstrstr	misc.c	/^dstrstr (const char *buf, const char *pattern)$/
+dstrtol	misc.c	/^dstrtol (char *c,  char **newpos, int base)$/
+e	dlxos.o	54
+e	os.dlx	61
+e	os.lst	58
+em 	dlxos.o	192
+em 	os.dlx	199
+em 	os.lst	193
+emptyLoop	sysproc.c	/^emptyLoop (int me)$/
+exitsim	dlxos.o	/^;;; should call exitsim() or exit() rather than re/
+exitsim	os.dlx	/^;;; should call exitsim() or exit() rather than re/
+exitsim	os.dlx	/^;;; programs run without an OS - should call exits/
+exitsim	os.lst	/^   26                      ;;; should call exitsim/
+exitsim	os.lst	/^12682                      ;;; programs run withou/
+f30	dlxos.o	131
+f30	os.dlx	138
+f30	os.lst	134
+fd	filesys.h	47
+findpid	process.c	/^unsigned findpid(PCB *pcb)$/
+first	os.dlx	12676
+first	os.lst	13460
+first	queue.h	27
+flags	filesys.h	56
+flags	process.h	38
+fp	filesys.o	13
+fp	memory.o	13
+fp	misc.o	9
+fp	os.dlx	379
+fp	os.lst	377
+fp	process.o	9
+fp	queue.o	9
+fp	synch.o	9
+fp	sysproc.o	9
+fp	traps.o	13
+fp	userprog1.dlx	20
+fp	userprog1.dlx	184
+fp	userprog1.lst	26
+fp	userprog1.lst	171
+fp	userprog1.o	13
+fp	userprog2.dlx	20
+fp	userprog2.dlx	184
+fp	userprog2.lst	26
+fp	userprog2.lst	171
+fp	userprog2.o	13
+fp	userprog.dlx	35
+fp	userprog.dlx	252
+fp	userprog.lst	58
+fp	userprog.lst	256
+fp	userprog.o	28
+freeLinks	queue.c	11
+freemapmax	memory.c	14
+freepages	memory.c	16
+freepcbs	process.c	23
+fs	filesys.c	17
+fs	filesys.h	55
+get_argument	process.c	/^uint32 get_argument(char *string)$/
+getxvalue	dlxsim.cc	/^getxvalue (int x)$/
+getxvalue	process.c	/^getxvalue (int x)$/
+han	dlxos.o	133
+han	os.dlx	140
+han	os.lst	136
+in	dlxos.o	49
+in	os.dlx	56
+in	os.lst	54
+instead	dlxos.o	169
+instead	os.dlx	176
+instead	os.lst	171
+interrupts	dlxos.o	190
+interrupts	os.dlx	197
+interrupts	os.lst	191
+intrSaveReg	dlxos.s	/^intrSaveReg:$/
+intrSystem	dlxos.s	/^intrSystem:$/
+intrreturn	dlxos.o	177
+intrreturn	os.dlx	184
+intrreturn	os.lst	178
+inuse	synch.h	24
+invert	memory.c	/^invert (uint32 n)$/
+isspace	misc.h	/^isspace (char c)$/
+isxdigit	misc.h	/^isxdigit (char c)$/
+l	process.h	42
+last	queue.h	28
+ld	os.dlx	12680
+ld be s	os.lst	13464
+linkpool	queue.c	12
+locals	filesys.o	11
+locals	memory.o	11
+locals	misc.o	7
+locals	os.dlx	377
+locals	os.lst	375
+locals	process.o	7
+locals	queue.o	7
+locals	synch.o	7
+locals	sysproc.o	7
+locals	traps.o	11
+locals	userprog1.dlx	18
+locals	userprog1.dlx	182
+locals	userprog1.lst	24
+locals	userprog1.lst	169
+locals	userprog1.o	11
+locals	userprog2.dlx	18
+locals	userprog2.dlx	182
+locals	userprog2.lst	24
+locals	userprog2.lst	169
+locals	userprog2.o	11
+locals	userprog.dlx	33
+locals	userprog.dlx	250
+locals	userprog.lst	56
+locals	userprog.lst	254
+locals	userprog.o	26
+moveBetweenSpaces	memory.c	/^moveBetweenSpaces (PCB *pcb, unsigned char *s, uns/
+mutex	synch.working.h	29
+mysems	sysproc.c	18
+name	process.h	39
+negativeone	memory.c	17
+next	queue.h	20
+nfreepages	memory.c	15
+nitems	queue.h	29
+nop	userprog1.dlx	24
+nop	userprog1.dlx	34
+nop	userprog1.lst	30
+nop	userprog1.lst	40
+nop	userprog1.o	17
+nop	userprog1.o	27
+nop	userprog2.dlx	24
+nop	userprog2.dlx	34
+nop	userprog2.lst	30
+nop	userprog2.lst	40
+nop	userprog2.o	17
+nop	userprog2.o	27
+not	dlxos.o	182
+not	os.dlx	189
+not	os.lst	183
+npages	process.h	41
+npri	synch.working.h	31
+nwaiters	synch.working.h	37
+oa	dlxos.o	207
+oa	os.dlx	214
+oa	os.lst	207
+object	queue.h	23
+of	userprog1.dlx	78
+of	userprog1.lst	80
+of	userprog2.dlx	78
+of	userprog2.lst	80
+of	userprog.dlx	146
+of	userprog.lst	165
+of	usertraps.o	21
+openfiles	filesys.c	20
+os.dlx	Makefile	/^os.dlx: $(OBJS) dlxos.o trap_random.o osend.o$/
+os.dlx.obj	Makefile	/^os.dlx.obj: os.dlx$/
+osend.o	Makefile	/^osend.o: osend.s$/
+pagestart	memory.c	13
+pagetable	process.h	40
+pcbs	process.c	40
+pointer	dlxos.o	182
+pointer	os.dlx	189
+pointer	os.lst	183
+prev	queue.h	21
+previous	dlxos.o	183
+previous	os.dlx	190
+previous	os.lst	184
+previously	dlxos.o	179
+previously	os.dlx	186
+previously	os.lst	180
+pri	synch.working.h	30
+process	dlxos.o	57
+process	dlxos.o	58
+process	os.dlx	64
+process	os.dlx	65
+process	os.lst	60
+process	os.lst	61
+processQuantum	process.c	45
+process_create	process.c	/^void process_create(char *name, ...)$/
+programs	os.dlx	12627
+programs	os.lst	13417
+programs	userprog1.dlx	71
+programs	userprog1.lst	74
+programs	userprog2.dlx	71
+programs	userprog2.lst	74
+programs	userprog.dlx	139
+programs	userprog.lst	159
+programs	usertraps.o	14
+queue	queue.h	22
+r0	filesys.o	13
+r0	memory.o	13
+r0	misc.o	9
+r0	os.dlx	379
+r0	os.lst	377
+r0	process.o	9
+r0	queue.o	9
+r0	synch.o	9
+r0	sysproc.o	9
+r0	traps.o	13
+r0	userprog1.dlx	20
+r0	userprog1.dlx	25
+r0	userprog1.dlx	26
+r0	userprog1.dlx	27
+r0	userprog1.dlx	35
+r0	userprog1.dlx	184
+r0	userprog1.lst	26
+r0	userprog1.lst	31
+r0	userprog1.lst	32
+r0	userprog1.lst	33
+r0	userprog1.lst	41
+r0	userprog1.lst	171
+r0	userprog1.o	13
+r0	userprog1.o	18
+r0	userprog1.o	19
+r0	userprog1.o	20
+r0	userprog1.o	28
+r0	userprog2.dlx	20
+r0	userprog2.dlx	25
+r0	userprog2.dlx	26
+r0	userprog2.dlx	27
+r0	userprog2.dlx	35
+r0	userprog2.dlx	184
+r0	userprog2.lst	26
+r0	userprog2.lst	31
+r0	userprog2.lst	32
+r0	userprog2.lst	33
+r0	userprog2.lst	41
+r0	userprog2.lst	171
+r0	userprog2.o	13
+r0	userprog2.o	18
+r0	userprog2.o	19
+r0	userprog2.o	20
+r0	userprog2.o	28
+r0	userprog.dlx	35
+r0	userprog.dlx	252
+r0	userprog.lst	58
+r0	userprog.lst	256
+r0	userprog.o	28
+r1	dlxos.o	157
+r1	dlxos.o	196
+r1	dlxos.o	197
+r1	dlxos.o	197
+r1	dlxos.o	198
+r1	dlxos.o	302
+r1	dlxos.o	303
+r1	dlxos.o	304
+r1	dlxos.o	304
+r1	dlxos.o	305
+r1	dlxos.o	305
+r1	dlxos.o	307
+r1	dlxos.o	308
+r1	dlxos.o	308
+r1	dlxos.o	318
+r1	dlxos.o	319
+r1	dlxos.o	319
+r1	os.dlx	164
+r1	os.dlx	203
+r1	os.dlx	204
+r1	os.dlx	204
+r1	os.dlx	205
+r1	os.dlx	309
+r1	os.dlx	310
+r1	os.dlx	311
+r1	os.dlx	311
+r1	os.dlx	312
+r1	os.dlx	312
+r1	os.dlx	314
+r1	os.dlx	315
+r1	os.dlx	315
+r1	os.dlx	325
+r1	os.dlx	326
+r1	os.dlx	326
+r1	os.lst	159
+r1	os.lst	197
+r1	os.lst	198
+r1	os.lst	198
+r1	os.lst	199
+r1	os.lst	298
+r1	os.lst	299
+r1	os.lst	300
+r1	os.lst	300
+r1	os.lst	301
+r1	os.lst	301
+r1	os.lst	303
+r1	os.lst	304
+r1	os.lst	304
+r1	os.lst	313
+r1	os.lst	314
+r1	os.lst	314
+r1	userprog1.dlx	32
+r1	userprog1.dlx	33
+r1	userprog1.lst	38
+r1	userprog1.lst	39
+r1	userprog1.o	25
+r1	userprog1.o	26
+r1	userprog2.dlx	32
+r1	userprog2.dlx	33
+r1	userprog2.lst	38
+r1	userprog2.lst	39
+r1	userprog2.o	25
+r1	userprog2.o	26
+r2	dlxos.o	246
+r2	dlxos.o	299
+r2	dlxos.o	300
+r2	dlxos.o	301
+r2	dlxos.o	301
+r2	dlxos.o	305
+r2	dlxos.o	309
+r2	filesys.o	17
+r2	memory.o	17
+r2	misc.o	13
+r2	os.dlx	253
+r2	os.dlx	306
+r2	os.dlx	307
+r2	os.dlx	308
+r2	os.dlx	308
+r2	os.dlx	312
+r2	os.dlx	316
+r2	os.dlx	383
+r2	os.lst	244
+r2	os.lst	295
+r2	os.lst	296
+r2	os.lst	297
+r2	os.lst	297
+r2	os.lst	301
+r2	os.lst	305
+r2	os.lst	381
+r2	process.o	13
+r2	queue.o	13
+r2	synch.o	13
+r2	sysproc.o	13
+r2	traps.o	17
+r2	userprog1.dlx	27
+r2	userprog1.dlx	30
+r2	userprog1.dlx	30
+r2	userprog1.dlx	38
+r2	userprog1.dlx	188
+r2	userprog1.lst	33
+r2	userprog1.lst	36
+r2	userprog1.lst	36
+r2	userprog1.lst	44
+r2	userprog1.lst	175
+r2	userprog1.o	20
+r2	userprog1.o	23
+r2	userprog1.o	23
+r2	userprog1.o	31
+r2	userprog2.dlx	27
+r2	userprog2.dlx	30
+r2	userprog2.dlx	30
+r2	userprog2.dlx	38
+r2	userprog2.dlx	188
+r2	userprog2.lst	33
+r2	userprog2.lst	36
+r2	userprog2.lst	36
+r2	userprog2.lst	44
+r2	userprog2.lst	175
+r2	userprog2.o	20
+r2	userprog2.o	23
+r2	userprog2.o	23
+r2	userprog2.o	31
+r2	userprog.dlx	38
+r2	userprog.dlx	256
+r2	userprog.lst	61
+r2	userprog.lst	260
+r2	userprog.o	31
+r28	dlxos.o	109
+r28	os.dlx	116
+r28	os.lst	112
+r29	dlxos.o	298
+r29	dlxos.o	298
+r29	dlxos.o	310
+r29	dlxos.o	310
+r29	filesys.o	12
+r29	filesys.o	13
+r29	filesys.o	15
+r29	filesys.o	15
+r29	memory.o	12
+r29	memory.o	13
+r29	memory.o	15
+r29	memory.o	15
+r29	misc.o	8
+r29	misc.o	9
+r29	misc.o	11
+r29	misc.o	11
+r29	os.dlx	305
+r29	os.dlx	305
+r29	os.dlx	317
+r29	os.dlx	317
+r29	os.dlx	378
+r29	os.dlx	379
+r29	os.dlx	381
+r29	os.dlx	381
+r29	os.lst	294
+r29	os.lst	294
+r29	os.lst	306
+r29	os.lst	306
+r29	os.lst	376
+r29	os.lst	377
+r29	os.lst	379
+r29	os.lst	379
+r29	process.o	8
+r29	process.o	9
+r29	process.o	11
+r29	process.o	11
+r29	queue.o	8
+r29	queue.o	9
+r29	queue.o	11
+r29	queue.o	11
+r29	synch.o	8
+r29	synch.o	9
+r29	synch.o	11
+r29	synch.o	11
+r29	sysproc.o	8
+r29	sysproc.o	9
+r29	sysproc.o	11
+r29	sysproc.o	11
+r29	traps.o	12
+r29	traps.o	13
+r29	traps.o	15
+r29	traps.o	15
+r29	userprog1.dlx	19
+r29	userprog1.dlx	20
+r29	userprog1.dlx	22
+r29	userprog1.dlx	22
+r29	userprog1.dlx	183
+r29	userprog1.dlx	184
+r29	userprog1.dlx	186
+r29	userprog1.dlx	186
+r29	userprog1.lst	25
+r29	userprog1.lst	26
+r29	userprog1.lst	28
+r29	userprog1.lst	28
+r29	userprog1.lst	170
+r29	userprog1.lst	171
+r29	userprog1.lst	173
+r29	userprog1.lst	173
+r29	userprog1.o	12
+r29	userprog1.o	13
+r29	userprog1.o	15
+r29	userprog1.o	15
+r29	userprog2.dlx	19
+r29	userprog2.dlx	20
+r29	userprog2.dlx	22
+r29	userprog2.dlx	22
+r29	userprog2.dlx	183
+r29	userprog2.dlx	184
+r29	userprog2.dlx	186
+r29	userprog2.dlx	186
+r29	userprog2.lst	25
+r29	userprog2.lst	26
+r29	userprog2.lst	28
+r29	userprog2.lst	28
+r29	userprog2.lst	170
+r29	userprog2.lst	171
+r29	userprog2.lst	173
+r29	userprog2.lst	173
+r29	userprog2.o	12
+r29	userprog2.o	13
+r29	userprog2.o	15
+r29	userprog2.o	15
+r29	userprog.dlx	34
+r29	userprog.dlx	35
+r29	userprog.dlx	37
+r29	userprog.dlx	37
+r29	userprog.dlx	251
+r29	userprog.dlx	252
+r29	userprog.dlx	254
+r29	userprog.dlx	254
+r29	userprog.lst	57
+r29	userprog.lst	58
+r29	userprog.lst	60
+r29	userprog.lst	60
+r29	userprog.lst	255
+r29	userprog.lst	256
+r29	userprog.lst	258
+r29	userprog.lst	258
+r29	userprog.o	27
+r29	userprog.o	28
+r29	userprog.o	30
+r29	userprog.o	30
+r3	dlxos.o	113
+r3	dlxos.o	114
+r3	dlxos.o	143
+r3	dlxos.o	145
+r3	dlxos.o	147
+r3	dlxos.o	149
+r3	dlxos.o	150
+r3	dlxos.o	208
+r3	os.dlx	120
+r3	os.dlx	121
+r3	os.dlx	150
+r3	os.dlx	152
+r3	os.dlx	154
+r3	os.dlx	156
+r3	os.dlx	157
+r3	os.dlx	215
+r3	os.lst	116
+r3	os.lst	117
+r3	os.lst	146
+r3	os.lst	148
+r3	os.lst	150
+r3	os.lst	152
+r3	os.lst	153
+r3	os.lst	208
+r3	userprog1.dlx	25
+r3	userprog1.lst	31
+r3	userprog1.o	18
+r3	userprog2.dlx	25
+r3	userprog2.lst	31
+r3	userprog2.o	18
+r30	dlxos.o	111
+r30	filesys.o	12
+r30	filesys.o	13
+r30	memory.o	12
+r30	memory.o	13
+r30	misc.o	8
+r30	misc.o	9
+r30	os.dlx	118
+r30	os.dlx	378
+r30	os.dlx	379
+r30	os.lst	114
+r30	os.lst	376
+r30	os.lst	377
+r30	process.o	8
+r30	process.o	9
+r30	queue.o	8
+r30	queue.o	9
+r30	synch.o	8
+r30	synch.o	9
+r30	sysproc.o	8
+r30	sysproc.o	9
+r30	traps.o	12
+r30	traps.o	13
+r30	userprog1.dlx	19
+r30	userprog1.dlx	20
+r30	userprog1.dlx	183
+r30	userprog1.dlx	184
+r30	userprog1.lst	25
+r30	userprog1.lst	26
+r30	userprog1.lst	170
+r30	userprog1.lst	171
+r30	userprog1.o	12
+r30	userprog1.o	13
+r30	userprog2.dlx	19
+r30	userprog2.dlx	20
+r30	userprog2.dlx	183
+r30	userprog2.dlx	184
+r30	userprog2.lst	25
+r30	userprog2.lst	26
+r30	userprog2.lst	170
+r30	userprog2.lst	171
+r30	userprog2.o	12
+r30	userprog2.o	13
+r30	userprog.dlx	34
+r30	userprog.dlx	35
+r30	userprog.dlx	251
+r30	userprog.dlx	252
+r30	userprog.lst	57
+r30	userprog.lst	58
+r30	userprog.lst	255
+r30	userprog.lst	256
+r30	userprog.o	27
+r30	userprog.o	28
+r31	dlxos.o	60
+r31	dlxos.o	61
+r31	dlxos.o	61
+r31	dlxos.o	62
+r31	dlxos.o	63
+r31	dlxos.o	64
+r31	dlxos.o	64
+r31	dlxos.o	65
+r31	os.dlx	67
+r31	os.dlx	68
+r31	os.dlx	68
+r31	os.dlx	69
+r31	os.dlx	70
+r31	os.dlx	71
+r31	os.dlx	71
+r31	os.dlx	72
+r31	os.lst	63
+r31	os.lst	64
+r31	os.lst	64
+r31	os.lst	65
+r31	os.lst	66
+r31	os.lst	67
+r31	os.lst	67
+r31	os.lst	68
+r31	userprog1.dlx	26
+r31	userprog1.dlx	31
+r31	userprog1.dlx	31
+r31	userprog1.dlx	32
+r31	userprog1.dlx	35
+r31	userprog1.dlx	38
+r31	userprog1.lst	32
+r31	userprog1.lst	37
+r31	userprog1.lst	37
+r31	userprog1.lst	38
+r31	userprog1.lst	41
+r31	userprog1.lst	44
+r31	userprog1.o	19
+r31	userprog1.o	24
+r31	userprog1.o	24
+r31	userprog1.o	25
+r31	userprog1.o	28
+r31	userprog1.o	31
+r31	userprog2.dlx	26
+r31	userprog2.dlx	31
+r31	userprog2.dlx	31
+r31	userprog2.dlx	32
+r31	userprog2.dlx	35
+r31	userprog2.dlx	38
+r31	userprog2.lst	32
+r31	userprog2.lst	37
+r31	userprog2.lst	37
+r31	userprog2.lst	38
+r31	userprog2.lst	41
+r31	userprog2.lst	44
+r31	userprog2.o	19
+r31	userprog2.o	24
+r31	userprog2.o	24
+r31	userprog2.o	25
+r31	userprog2.o	28
+r31	userprog2.o	31
+r4	dlxos.o	137
+r4	dlxos.o	154
+r4	os.dlx	144
+r4	os.dlx	161
+r4	os.lst	140
+r4	os.lst	156
+r4	userprog1.dlx	36
+r4	userprog1.dlx	37
+r4	userprog1.dlx	37
+r4	userprog1.dlx	40
+r4	userprog1.lst	42
+r4	userprog1.lst	43
+r4	userprog1.lst	43
+r4	userprog1.lst	46
+r4	userprog1.o	29
+r4	userprog1.o	30
+r4	userprog1.o	30
+r4	userprog1.o	33
+r4	userprog2.dlx	36
+r4	userprog2.dlx	37
+r4	userprog2.dlx	37
+r4	userprog2.dlx	40
+r4	userprog2.lst	42
+r4	userprog2.lst	43
+r4	userprog2.lst	43
+r4	userprog2.lst	46
+r4	userprog2.o	29
+r4	userprog2.o	30
+r4	userprog2.o	30
+r4	userprog2.o	33
+r5	dlxos.o	139
+r5	dlxos.o	155
+r5	os.dlx	146
+r5	os.dlx	162
+r5	os.lst	142
+r5	os.lst	157
+r6	dlxos.o	141
+r6	dlxos.o	153
+r6	os.dlx	148
+r6	os.dlx	160
+r6	os.lst	144
+r6	os.lst	155
+randomStuff	sysproc.c	/^randomStuff (int seed)$/
+rcsid	dlxsim.cc	13
+rcsid	filesys.c	9
+rcsid	memory.c	6
+rcsid	traps.c	7
+returns	dlxos.o	169
+returns	os.dlx	176
+returns	os.lst	171
+room	dlxos.o	78
+room	os.dlx	85
+room	os.lst	81
+routine	dlxos.o	169
+routine	os.dlx	176
+routine	os.lst	171
+runQueue	process.c	27
+second	os.dlx	12677
+second	os.lst	13461
+sem_t	lab3.h	9
+sem_t	synch.h	17
+sems	synch.c	12
+simulator	os.dlx	12678
+simulator	os.lst	13462
+size	os.dlx	3
+size	os.dlx	4
+size	os.lst	4
+size	os.lst	5
+size	userprog1.dlx	3
+size	userprog1.dlx	4
+size	userprog1.lst	4
+size	userprog1.lst	5
+size	userprog2.dlx	3
+size	userprog2.dlx	4
+size	userprog2.lst	4
+size	userprog2.lst	5
+size	userprog.dlx	3
+size	userprog.dlx	4
+size	userprog.lst	4
+size	userprog.lst	5
+stack	dlxos.o	194
+stack	os.dlx	201
+stack	os.lst	195
+status	dlxos.o	306
+status	os.dlx	313
+status	os.lst	302
+sysStackArea	process.h	37
+sysStackPtr	process.h	36
+system	dlxos.o	57
+system	os.dlx	64
+system	os.lst	60
+the	dlxos.o	50
+the	dlxos.o	58
+the	os.dlx	57
+the	os.dlx	65
+the	os.dlx	12676
+the	os.dlx	12677
+the	os.lst	55
+the	os.lst	61
+the	os.lst	13460
+the	os.lst	13461
+this	dlxos.o	184
+this	os.dlx	191
+this	os.lst	185
+though	dlxos.o	183
+though	os.dlx	190
+though	os.lst	184
+trap_random.o	Makefile	/^trap_random.o: trap_random.s$/
+u	filesys.h	61
+uint32	dlxos.h	10
+uint32	lab3.h	8
+userprog	Makefile	/^userprog: userprog.o usertraps.o misc.o$/
+userprog1	Makefile	/^userprog1: userprog1.o usertraps.o misc.o$/
+userprog2	Makefile	/^userprog2: userprog2.o usertraps.o misc.o$/
+usertraps.o	Makefile	/^usertraps.o: usertraps.s$/
+uses	dlxos.o	181
+uses	os.dlx	188
+uses	os.lst	182
+waitQueue	process.c	32
+waiting	synch.h	22
+waiting	synch.working.h	20
+way	dlxos.o	53
+way	os.dlx	60
+way	os.lst	57
+words	dlxos.o	184
+words	os.dlx	191
+words	os.lst	185
+x0f	dlxos.o	301
+x0f	dlxos.o	308
+x0f	os.dlx	308
+x0f	os.dlx	315
+x0f	os.lst	297
+x0f	os.lst	304
+x2000	userprog1.dlx	7
+x2000	userprog1.lst	8
+x2000	userprog2.dlx	7
+x2000	userprog2.lst	8
+x2000	userprog.dlx	7
+x2000	userprog.lst	8
+x410	dlxos.o	332
+x410	os.dlx	339
+x410	os.lst	327
+xb000	os.dlx	7
+xb000	os.lst	8
+xfff0	dlxos.o	304
+xfff0	os.dlx	311
+xfff0	os.lst	300
+zombieQueue	process.c	36
