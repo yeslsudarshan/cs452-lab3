@@ -15,6 +15,8 @@ static int	freemapmax;
 static int	nfreepages;
 static uint32	freepages[MEMORY_MAX_PAGES/32];
 static uint32	negativeone = 0xffffffff;
+uint32 *l2_pagetable;
+
 
 //----------------------------------------------------------------------
 //
@@ -167,21 +169,26 @@ MemoryTranslateUserToSystem (PCB *pcb, uint32 addr)
 //-------------------------------------------
 // You need to change the code below 
 //-------------------------------------------
-    uint32 *l2_pagetable;
-    int	page = addr / MEMORY_PAGE_SIZE;
-    int l2_page_num = page % L2_MAX_ENTRIES;
-    int l1_page_num = page / L2_MAX_ENTRIES;
+    
+    int	page = addr / MEMORY_PAGE_SIZE; //Find the page 
+    int l1_page_num = page / L2_MAX_ENTRIES; //Get the L1 pt base
+    int l2_page_num = page % L2_MAX_ENTRIES; //Get the L2 pt base
     int offset = addr % MEMORY_PAGE_SIZE;
-	
-   if((l1_page_num*l2_page_num) > ((L1_MAX_ENTRIES)*(L2_MAX_ENTRIES))) {
+			
+//    printf("Virtual address : %d  l1_page_num : %d l2_page_num :  %d \n",addr,l1_page_num,l2_page_num);
+   //Check out of range of addressable memory
+   if((l1_page_num*l2_page_num) > ((L1_MAX_ENTRIES-1)*(L2_MAX_ENTRIES-1))) {  
+
       printf("Ran out of memory  L1 %d L2  %d ",l1_page_num,l2_page_num);
       return (0);
-    }
+
+    } 
+    //printf("l2_pagetable : ",l2_pagetable);
+        
+    //Find the pte in L2
     l2_pagetable = (uint32 *)(pcb->pagetable[l1_page_num] & MEMORY_PTE_MASK);
     l2_pagetable += l2_page_num;
-    /* Sudarshan*
-    printf("L1 page: %d\tL2 page: %d\treturning: %p\n", l1_page_num, l2_page_num, l2_pagetable);//*/
-
+    
     return ((*(l2_pagetable) & MEMORY_PTE_MASK)+ offset);
 }
 

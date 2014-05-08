@@ -11,6 +11,7 @@ static char rcsid[] = "$Id: traps.c,v 1.1 2000/09/20 01:50:19 elm Exp elm $";
 #include "traps.h"
 #include "process.h"
 
+
 //----------------------------------------------------------------------
 //
 //	TimerSet
@@ -381,7 +382,8 @@ dointerrupt (unsigned int cause, unsigned int iar, unsigned int isr,
       exitsim ();
       break;
     case TRAP_PAGEFAULT:
-        //printf("In page fault handler\n");
+//         printf("In page fault handler\n %d ",l2_pagetable);
+            
          PageFaultHandler();
 
       break;

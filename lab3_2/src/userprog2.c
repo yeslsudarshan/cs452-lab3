@@ -3,15 +3,15 @@ main()
 {
     int i,j;
     int  Sum=0;
-    int nArray[1000];
+    int nArray[10000];
 
 
-    for(i=0,j=1;i<1000;i+=500)
+    for(i=0,j=1;i<10000;i+=500)
         nArray[i]=j++;
 
     Printf("\n\n 1st part \n\n");
 
-    for(i=0;i<1000;i+=500)
+    for(i=0;i<10000;i+=500)
         Sum+= nArray[i];
 
     Printf("\nIn Userprog2, Sum : %d\n\n",Sum);

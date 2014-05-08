@@ -104,28 +104,46 @@ ProcessFreeResources (PCB *pcb)
 {
   int		i;
   int		j;
-
+  int  physical_page_addr;
+  int  virtual_page_base_addr;
+  
+//Remove the process from the current queue and place the pcb in the free queue
   QueueInsertLast (&freepcbs, &pcb->l);
+  
+   
   // Free the process's memory.  This is easy with a one-level page
   // table, but could get more complex with two-level page tables.
 
 //------------------------------------------
 // You may change the code below
 //------------------------------------------
+  
+ //For each PT Level, free the memory / PT the table entry points to.
 
   for (i = 0; i < L1_MAX_ENTRIES; i++) {
+ 
     if(pcb->pagetable[i] != 0) {
-      for(j = 0; j < L2_MAX_ENTRIES; j++) {
-        if( *((uint32 *) (pcb->pagetable[i] & MEMORY_PTE_MASK) + j)  != 0) {
-         /* printf("Process id: %lu\tVirtual page base address: %p\tFreeing physical page number: %d->%d\n",(pcb-pcbs),(pcb->pagetable[i]&MEMORY_PTE_MASK)+4*j,i,j);*/
-          MemoryFreePte (((uint32 *) (pcb->pagetable[i] * MEMORY_PTE_MASK)) + j );
-        }
-       MemoryFreePte (pcb->pagetable[i]);
-   
-     }
 
-    }
-  }
+      for(j = 0; j < L2_MAX_ENTRIES; j++) {
+          
+        physical_page_addr = *((uint32 *) (pcb->pagetable[i] & MEMORY_PTE_MASK) + j);
+         
+        virtual_page_base_addr = (i<<MEMORY_L1_PAGE_SIZE_BITS) + (j*MEMORY_PAGE_SIZE);
+
+        if( physical_page_addr != 0) {
+ 
+           printf("Process id: %d\t\tVirtual page base address:0x%x\t\tFreeing physical page number: %d \n",pcb-pcbs,virtual_page_base_addr,physical_page_addr/MEMORY_PAGE_SIZE);
+ 
+          MemoryFreePte (((uint32 *) (pcb->pagetable[i] * MEMORY_PTE_MASK)) + j );
+           } 
+      
+         }
+
+    MemoryFreePte (pcb->pagetable[i]);
+
+      }
+  
+   }
 
   pcb->npages = 0;
 
@@ -364,21 +382,24 @@ ProcessFork (VoidFunc func, uint32 param, char *name, int isUser)
   unsigned char buf[100];
   uint32 dum[MAX_ARGS+8], count, offset;
   char *str;
-  uint32 *L2_pagetable;
+  uint32 *l2_pagetable;
 
   intrs = DisableIntrs ();
   dbprintf ('I', "Old interrupt value was 0x%x.\n", intrs);
   dbprintf ('p', "Entering ProcessFork args=0x%x 0x%x %s %d\n", func,
 	    param, name, isUser);
+
   // Get a free PCB for the new process
   if (QueueEmpty (&freepcbs)) {
     printf ("FATAL error: no free processes!\n");
     exitsim ();	// NEVER RETURNS!
   }
+
   l = QueueFirst (&freepcbs);
   dbprintf ('p', "Got a link @ 0x%x\n", l);
   QueueRemove (l);
   pcb = (PCB *)(l->object);
+  
   // This prevents someone else from grabbing this process
   ProcessSetStatus (pcb, PROCESS_STATUS_RUNNABLE);
 
@@ -405,44 +426,60 @@ ProcessFork (VoidFunc func, uint32 param, char *name, int isUser)
 //------------------------------------------------------------
 
 
-  pcb->npages = 4;
+  pcb->npages = 4; // 4 Initial pages to the  process
   
-  // Allocate first L2 page table
+
+  // Now allocate the 1st L2 Page table
   new_page = MemoryAllocPage();
+
   if (new_page == 0){
+
     printf ("couldn't allocate initial - no free pages!\n");
     exitsim ();	
+
    } 
- 
-  pcb->pagetable[0] = MemorySetupPte(new_page);
-  L2_pagetable = (uint32 *) (pcb->pagetable[0] & MEMORY_PTE_MASK);
+   
+  pcb->pagetable[0] = MemorySetupPte(new_page); // fetch a new physical page reference
+
+  l2_pagetable = (uint32 *) (pcb->pagetable[0] & MEMORY_PTE_MASK); //Use it to address L2 Page
   
-  // Allocate 3 pages for text/data within first L2 page table
+  // Now allocate the 3 pages for DATA AND TEXT 
   for(i = 0; i < 3; i++) {
+
     new_page = MemoryAllocPage();
+
     if (new_page == 0){
+
      printf ("couldn't allocate initial - no free pages!\n");
+
     exitsim ();
-   } 
-  
-      *(L2_pagetable + i) = MemorySetupPte(new_page);
- /*    printf("Process id: %lu\tPage text/data address: %p\t\tPhysical page number allocated: 0->%d\n",pcb-pcbs, L2_pagetable+i, i);*/
+
+   }
+       
+      //Make the L2 PT point to the apprporaite physical address of the PT
+      *(l2_pagetable + i) = MemorySetupPte(new_page);
    }
  
-
+   
+  //nOW for the user stack to be at last location , we need an L2 PT to point there.
   new_page = MemoryAllocPage();
 
   if(new_page == 0){
+
    printf ("Couldn't allocate user stack L2 - no free pages!\n");
-    exitsim ();	
+
+   exitsim ();	
+
    } //LAST L2 PAGE
   
+  //Point to last L2 Page. Get physical reference
   pcb->pagetable[L1_MAX_ENTRIES - 1] = MemorySetupPte(new_page);
-
-  L2_pagetable = (uint32 *) (pcb->pagetable[L1_MAX_ENTRIES - 1] & MEMORY_PTE_MASK);
+   
+  // LAst L2's Physical page
+  l2_pagetable = (uint32 *) (pcb->pagetable[L1_MAX_ENTRIES - 1] & MEMORY_PTE_MASK);
   
   
-  // User Stack
+  // Now allocate a page for user stack
   new_page = MemoryAllocPage ();
 
   if (new_page == 0){
@@ -450,7 +487,9 @@ ProcessFork (VoidFunc func, uint32 param, char *name, int isUser)
     exitsim ();	
    }
   
-  *(L2_pagetable + L2_MAX_ENTRIES - 1) = MemorySetupPte(new_page);
+
+   //Make the l2 point to the last user stack
+  *(l2_pagetable + L2_MAX_ENTRIES - 1) = MemorySetupPte(new_page);
 
 
    //Sys Stack
@@ -506,7 +545,7 @@ ProcessFork (VoidFunc func, uint32 param, char *name, int isUser)
 
   // Set the size (maximum number of entries) of the level 1 page table.
   // In our case, it's just one page, but it could be larger.
-  stackframe[PROCESS_STACK_PTSIZE] = L1_MAX_ENTRIES * L2_MAX_ENTRIES;
+  stackframe[PROCESS_STACK_PTSIZE] = L1_MAX_ENTRIES * L2_MAX_ENTRIES; // sudarshan  : max no. of PTs
 
   // Set the number of bits for both the level 1 and level 2 page tables.
   // This can be changed on a per-process basis if desired.  For now,
@@ -951,57 +990,80 @@ void ProcessKill (PCB *pcb)
 	// add your code below
      
         QueueRemove(&pcb->l);
+
         ProcessFreeResources (pcb);
+
 	ProcessSchedule ();
 }
 
 
 void PageFaultHandler()
 {
-	// add your code below
-  
- uint32 *tempstackframe;
-  uint32 faultaddress;
-  int newPage;
+   // add your code below
+
+  uint32 *tempstackframe;
+
+  uint32 fault_address;
+
+  int new_page;
+
   uint32* l2_pagetable;
+
   int page, l2_page, l1_page;
 
 
   tempstackframe = currentPCB->currentSavedFrame ;
-  faultaddress = tempstackframe[PROCESS_STACK_FAULT];
-  page = faultaddress / MEMORY_PAGE_SIZE;
-  l2_page = page % L2_MAX_ENTRIES;
+ 
+  fault_address = tempstackframe[PROCESS_STACK_FAULT]; //Get the faulting address
+
+  page = fault_address / MEMORY_PAGE_SIZE;
+
   l1_page = page / L2_MAX_ENTRIES;
+
+  l2_page = page % L2_MAX_ENTRIES;
+
   //printf("Inside PageFaultHandler page requested is : %d at %p \n",l2_page,faultaddress);
   
+  //Check if the 1MB memeory limit has crossed. If it has , the process is to be killed.
   if(currentPCB->npages == 128){
     
    printf("Max memory allocation for a process 1MB reached killing proc \n");
+
    ProcessKill(currentPCB);
+
    }
 
-  newPage = MemoryAllocPage();
-  if(newPage == 0) {
+  // Do the remaining chores - allocate L2 page, make L2 Point to it if necessary,  
+  new_page = MemoryAllocPage();
+
+  if(new_page == 0) {
+
     printf("Fatal error -- new page allocated incorrectly\n");
-    return ProcessKill(currentPCB);
+
+    ProcessKill(currentPCB);
   }
 
   if(currentPCB->pagetable[l1_page] == 0) {
-    currentPCB->pagetable[l1_page] = MemorySetupPte (newPage);
-  }
+
+    currentPCB->pagetable[l1_page] = MemorySetupPte (new_page);
+ }
   l2_pagetable = (uint32*)(currentPCB->pagetable[l1_page] & MEMORY_PTE_MASK);
 
-  newPage = MemoryAllocPage ();
-  if(newPage == 0) {
+  new_page = MemoryAllocPage ();
+
+  if(new_page == 0) {
+
     printf("Fatal error -- new page allocated incorrectly\n");
-    return ProcessKill(currentPCB);
+
+    ProcessKill(currentPCB);
   }
    l2_pagetable += l2_page;
-   *l2_pagetable = MemorySetupPte(newPage);
 
-  currentPCB->npages = currentPCB->npages + 1;  
+   *l2_pagetable = MemorySetupPte(new_page);
 
-  /*printf("Process id: %lu\tPage fault address: %p\t\tPhysical page number allocated: %d->%d\n",currentPCB-pcbs,l2_pagetable+l2_page,l1_page,l2_page);*/
+   currentPCB->npages = currentPCB->npages + 1;  
+
   
+  printf("Process id: %d \t\t Page fault address:0x%x \t Physical page number allocated: %d \n",currentPCB-pcbs,fault_address,new_page);
 
 }
